@@ -8,8 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card"
-import { Input } from "../components/ui/input"
-import { Label } from "../components/ui/label"
 import {
   Tabs,
   TabsContent,
@@ -32,7 +30,7 @@ const Login =  () => {
                         Puedes iniciar sesión aquí
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-2">
+                <CardContent className="space-y-3">
                     <InputLabel name="correo" label="Correo" placeholder="correo@correo.com" type="email" />
                     <InputLabel name="contraseña" label="Contraseña" placeholder="Contraseña" type="password" />
                 </CardContent>
@@ -49,7 +47,7 @@ const Login =  () => {
                         Puedes registrarte aquí
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-2">
+                <CardContent className="space-y-3">
                     <InputLabel name="correo" label="Correo" placeholder="correo@correo.com" type="email" />
                     <InputLabel name="contraseña" label="Contraseña" placeholder="Contraseña" type="password" />
                     <InputLabel name="confirmar" label="Confirmar contraseña" placeholder="Contraseña" type="password" />
