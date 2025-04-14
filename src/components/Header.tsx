@@ -1,3 +1,4 @@
+import { ModeToggle } from "./mode-toggle";
 import { Button } from "./ui/button";
 const Header = () => {
     return (
@@ -5,7 +6,10 @@ const Header = () => {
         <p className="text-4xl w-full">
             Sistema de Gestion de proyectos y tareas
         </p>
-        <Button className="mr-3 my-1">Salir</Button>
+        <div className="flex mr-4 my-2 space-x-3">
+            <ModeToggle/>
+            <Button>Salir</Button>
+        </div>
     </header>
     )
 }

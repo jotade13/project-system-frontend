@@ -1,7 +1,8 @@
 import { Outlet } from "react-router";
+import { ModeToggle } from "../components/mode-toggle";
 const GuestLayout =  () => {
     return (<>
-        <h1>Hello</h1>
+        <ModeToggle/>
         <Outlet />
     </>)
 }
