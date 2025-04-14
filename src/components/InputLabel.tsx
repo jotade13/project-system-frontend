@@ -12,7 +12,7 @@ const InputLabel = ({name,type,placeholder,label}:childrens) => {
     return (
         <div className="space-y-1">
             <Label htmlFor={name}>{label}</Label>
-            <Input id={name} type={type} placeholder={placeholder}/>
+            <Input name={name} type={type} placeholder={placeholder}/>
         </div>
     )
 }
