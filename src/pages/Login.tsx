@@ -1,64 +1,20 @@
-import InputLabel from "../components/InputLabel"
-import { Button } from "../components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card"
 import {
   Tabs,
-  TabsContent,
   TabsList,
   TabsTrigger,
 } from "../components/ui/tabs"
+import LoginForm from "../components/login/LoginForm"
+import RegisterForm from "../components/login/RegisterForm"
 
 const Login =  () => {
     return (
-        <Tabs defaultValue="account" className="w-[400px] justify-center self-center m-auto m">
+        <Tabs defaultValue="account" className="w-[400px] h-full justify-center self-center m-auto m">
             <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Iniciar Sesión</TabsTrigger>
-                <TabsTrigger value="password">Registrar</TabsTrigger>
+                <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
+                <TabsTrigger value="register">Registrar</TabsTrigger>
             </TabsList>
-            <TabsContent value="account">
-                <Card>
-                <CardHeader>
-                    <CardTitle>Iniciar Sesión</CardTitle>
-                    <CardDescription>
-                        Puedes iniciar sesión aquí
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                    <InputLabel name="correo" label="Correo" placeholder="correo@correo.com" type="email" />
-                    <InputLabel name="contraseña" label="Contraseña" placeholder="Contraseña" type="password" />
-                </CardContent>
-                <CardFooter>
-                    <Button className="">Iniciar Sesión</Button>
-                </CardFooter>
-                </Card>
-            </TabsContent>
-            <TabsContent value="password">
-                <Card>
-                <CardHeader>
-                    <CardTitle>Registrar</CardTitle>
-                    <CardDescription>
-                        Puedes registrarte aquí
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                    <InputLabel name="nombre" label="Nombre" placeholder="Nombre" type="text" />
-                    <InputLabel name="apellido" label="Apellido" placeholder="Apellido" type="text" />
-                    <InputLabel name="correo" label="Correo" placeholder="correo@correo.com" type="email" />
-                    <InputLabel name="contraseña" label="Contraseña" placeholder="Contraseña" type="password" />
-                    <InputLabel name="confirmar" label="Confirmar contraseña" placeholder="Contraseña" type="password" />
-                </CardContent>
-                <CardFooter>
-                    <Button>Registrarse</Button>
-                </CardFooter>
-                </Card>
-            </TabsContent>
+            <LoginForm />
+            <RegisterForm/>
         </Tabs>
     )
 }
