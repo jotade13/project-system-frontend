@@ -48,6 +48,8 @@ const Login =  () => {
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
+                    <InputLabel name="nombre" label="Nombre" placeholder="Nombre" type="text" />
+                    <InputLabel name="apellido" label="Apellido" placeholder="Apellido" type="text" />
                     <InputLabel name="correo" label="Correo" placeholder="correo@correo.com" type="email" />
                     <InputLabel name="contraseña" label="Contraseña" placeholder="Contraseña" type="password" />
                     <InputLabel name="confirmar" label="Confirmar contraseña" placeholder="Contraseña" type="password" />
