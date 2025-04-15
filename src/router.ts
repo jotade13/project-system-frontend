@@ -39,6 +39,7 @@ const router = createBrowserRouter([
         loader: checkUnauthLoader,
         children: [
             {
+                index: true,
                 path: "/login",
                 Component: Login,
             }
