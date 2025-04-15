@@ -41,7 +41,7 @@ const navigate = useNavigate();
                             <InputLabel name="password_confirmation" label="Confirmar contraseña" placeholder="Contraseña" type="password" />
                     </CardContent>
                     <CardFooter>
-                        <Button type="sbumit">Registrarse</Button>
+                        <Button type="submit">Registrarse</Button>
                     </CardFooter>
                 </form>
             </Card>

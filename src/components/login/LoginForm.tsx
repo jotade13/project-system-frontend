@@ -48,7 +48,7 @@ const LoginForm = () => {
                         <InputLabel name="password" label="Contraseña" placeholder="Contraseña" type="password" />
                      </CardContent>
                     <CardFooter>
-                        {!isPending ? <Button type="submit">Iniciar Sesión</Button> : <p>Cargando</p> }
+                        {!isPending ? <Button className="flex" type="submit">Iniciar Sesión</Button> : <p>Cargando</p> }
                 </CardFooter>
                 </form>
             </Card>
