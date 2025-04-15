@@ -29,8 +29,11 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 Component: Dashboard,
-                
             },
+            {
+                path: "*",
+                loader: checkUnauthLoader
+            }
         ],
     },
     {

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 const RegisterForm = () => {
 const navigate = useNavigate();
 
-    const {mutate} = useMutation({
+    const {mutate, isPending, isError} = useMutation({
         mutationFn: register,
         onSuccess: () => {
             navigate('/dashboard');
@@ -41,7 +41,7 @@ const navigate = useNavigate();
                             <InputLabel name="password_confirmation" label="Confirmar contraseña" placeholder="Contraseña" type="password" />
                     </CardContent>
                     <CardFooter>
-                        <Button type="submit">Registrarse</Button>
+                        {isPending ? <Button type="submit">Registrarse</Button> :<p>Cargando</p>}
                     </CardFooter>
                 </form>
             </Card>

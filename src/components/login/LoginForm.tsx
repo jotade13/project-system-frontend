@@ -15,11 +15,12 @@ import{login } from '../../util/http'
 import { useMutation } from "@tanstack/react-query"
 import React from "react"
 import { useNavigate } from "react-router"
+import ErrorBlock from "../ErrorBlock"
 
 const LoginForm = () => {
     const navigate = useNavigate();
 
-    const {mutate, isPending, isSuccess} = useMutation({
+    const {mutate, isPending, isError} = useMutation({
         mutationFn: login,
         onSuccess: () => {
             navigate('/dashboard');
@@ -34,26 +35,28 @@ const LoginForm = () => {
     }
 
     return (
-        <TabsContent value="login">
-            <Card>
-                <form id="login" onSubmit={handleSubmit}>
-                    <CardHeader>
-                        <CardTitle>Iniciar Sesión</CardTitle>
-                        <CardDescription>
-                            Puedes iniciar sesión aquí
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                        <InputLabel name="email" label="Correo" placeholder="correo@correo.com" type="email" />
-                        <InputLabel name="password" label="Contraseña" placeholder="Contraseña" type="password" />
-                     </CardContent>
-                    <CardFooter>
-                        {!isPending ? <Button className="flex" type="submit">Iniciar Sesión</Button> : <p>Cargando</p> }
-                </CardFooter>
-                </form>
-            </Card>
-            
-         </TabsContent>
+        <>
+            <TabsContent value="login">
+                <Card>
+                    <form id="login" onSubmit={handleSubmit}>
+                        <CardHeader>
+                            <CardTitle>Iniciar Sesión</CardTitle>
+                            <CardDescription>
+                                Puedes iniciar sesión aquí
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                            <InputLabel name="email" label="Correo" placeholder="correo@correo.com" type="email" />
+                            <InputLabel name="password" label="Contraseña" placeholder="Contraseña" type="password" />
+                        </CardContent>
+                        <CardFooter>
+                            {!isPending ? <Button type="submit">Iniciar Sesión</Button> : <p>Cargando</p> }
+                        </CardFooter>
+                    </form>
+                </Card>
+                {isError && <ErrorBlock errorText="Error en la autenticación"/>}
+            </TabsContent>
+        </>
         )
 }
 export default LoginForm;

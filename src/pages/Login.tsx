@@ -3,8 +3,9 @@ import {
   TabsList,
   TabsTrigger,
 } from "../components/ui/tabs"
-import LoginForm from "../components/login/LoginForm"
+//import LoginForm from "../components/login/LoginForm"
 import RegisterForm from "../components/login/RegisterForm"
+import LoginFormA from "../components/login/LoginFormA"
 
 const Login =  () => {
     return (
@@ -13,7 +14,7 @@ const Login =  () => {
                 <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
                 <TabsTrigger value="register">Registrar</TabsTrigger>
             </TabsList>
-            <LoginForm />
+            <LoginFormA />
             <RegisterForm/>
         </Tabs>
     )
