@@ -12,33 +12,30 @@ import { useNavigate } from "react-router"
 import { useMutation } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
 import ErrorAlert from "../ErrorAlert"
+import { formSchemaLogin } from "../../util/validations"
 
 
-const formSchema = z.object({
-    email: z.string().email({ message: "Dirección de correo invalida" }),
-    password: z.string().min(6,{message: "Contraseña debe tener al menos 6 caracteres"}).max(50, {message: "La contraseña no puede tener 50 caracteres"})
-})
 
 const LoginForm = () => {
 
     const navigate = useNavigate();
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof formSchemaLogin>>({
+        resolver: zodResolver(formSchemaLogin),
         defaultValues: {
           email: "",
           password: ""
         },
       })
 
-    const {mutate, isError} = useMutation({
+    const {mutate, isError, isPending} = useMutation({
         mutationFn: login,
         onSuccess: () => {
             navigate('/dashboard');
           }, 
     })
 
-    const onSubmit= (data: z.infer<typeof formSchema>) => {
+    const onSubmit = (data: z.infer<typeof formSchemaLogin>) => {
         mutate({data})
     }
 
@@ -83,7 +80,7 @@ const LoginForm = () => {
                                 />
                                 </CardContent>
                                 <CardFooter>
-                                    <Button type="submit">Iniciar Sesión</Button>
+                                    {!isPending ? <Button type="submit">Iniciar Sesión</Button> : <p>Cargando</p>}
                                 </CardFooter>
                         </Card>
                     </form>
