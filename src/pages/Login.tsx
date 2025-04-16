@@ -3,8 +3,9 @@ import {
   TabsList,
   TabsTrigger,
 } from "../components/ui/tabs"
-import LoginForm from "../components/login/LoginForm"
+//import LoginForm from "../components/login/LoginForm"
 import RegisterForm from "../components/login/RegisterForm"
+import LoginForm from "../components/login/LoginForm"
 
 const Login =  () => {
     return (
