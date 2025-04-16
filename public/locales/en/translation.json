@@ -1,0 +1,12 @@
+{
+    "login": {
+        "header":{
+            "title": "Project and Task Management System",
+            "button": "Logout"
+        },
+        "loginTab": {
+                "title": "Login",
+                "description" : "You can log in here"
+        }
+    }
+}
