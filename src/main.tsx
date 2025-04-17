@@ -3,7 +3,7 @@ import './index.css'
 import { StrictMode } from 'react';
 import { RouterProvider } from 'react-router';
 import router from './router';
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "./providers/theme-provider"
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './util/http';
 import { Toaster } from "@/components/ui/sonner"

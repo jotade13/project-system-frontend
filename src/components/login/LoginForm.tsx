@@ -12,7 +12,7 @@ import { useNavigate } from "react-router"
 import { useMutation } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
 import { formSchemaLogin } from "../../util/validations"
-import errorAlert from "../errorAlert"
+import errorAlert from "../alerts/errorAlert"
 import { useTranslation } from "react-i18next"
 
 
@@ -85,7 +85,7 @@ const LoginForm = () => {
                                 />
                                 </CardContent>
                                 <CardFooter>
-                                    {!isPending ? <Button type="submit">Iniciar Sesión</Button> : <p>Cargando</p>}
+                                    {!isPending ? <Button type="submit">{t("login.title")}</Button> : <p>Cargando</p>}
                                 </CardFooter>
                         </Card>
                     </form>

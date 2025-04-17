@@ -10,5 +10,16 @@
     "register": {
         "title": "Registrar",
         "description" : "Puedes registrarte aquí"
+    },
+    "language":
+    {
+        "spanish":"Español",
+        "english":"Inglés"
+    },
+    "theme":
+    {
+        "light":"Claro",
+        "dark":"Oscuro",
+        "system":"Sistema"
     }
 }
