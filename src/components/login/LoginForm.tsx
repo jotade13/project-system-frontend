@@ -11,13 +11,15 @@ import { TabsContent } from "../ui/tabs"
 import { useNavigate } from "react-router"
 import { useMutation } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
-import ErrorAlert from "../ErrorAlert"
 import { formSchemaLogin } from "../../util/validations"
+import errorAlert from "../errorAlert"
+import { useTranslation } from "react-i18next"
 
 
 
 const LoginForm = () => {
 
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
     const form = useForm<z.infer<typeof formSchemaLogin>>({
@@ -28,11 +30,14 @@ const LoginForm = () => {
         },
       })
 
-    const {mutate, isError, isPending} = useMutation({
+    const {mutate, isPending} = useMutation({
         mutationFn: login,
         onSuccess: () => {
             navigate('/dashboard');
-          }, 
+        },
+        onError: () => {
+            errorAlert("Error en la Autenticación")
+        }
     })
 
     const onSubmit = (data: z.infer<typeof formSchemaLogin>) => {
@@ -43,12 +48,12 @@ const LoginForm = () => {
     return (
         <TabsContent value="login">
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <form id="login" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Iniciar Sesión</CardTitle>
+                                <CardTitle>{t('login.title')}</CardTitle>
                                 <CardDescription>
-                                    Puedes iniciar sesión aquí
+                                    {t('login.description')}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-3">
@@ -85,7 +90,6 @@ const LoginForm = () => {
                         </Card>
                     </form>
                 </Form>
-                {isError && <ErrorAlert errorText="Error en la autenticación"/>}
         </TabsContent>
     )
 }

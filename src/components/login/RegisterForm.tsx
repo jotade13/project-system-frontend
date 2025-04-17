@@ -11,13 +11,15 @@ import { register } from "../../util/http";
 import { useNavigate } from "react-router";
 import { formSchemaRegister } from "../../util/validations";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
-import ErrorAlert from "../ErrorAlert";
 import { Input } from "../ui/input";
+import errorAlert from "../errorAlert";
+import { useTranslation } from "react-i18next";
 
 
 const RegisterForm = () => {
     const navigate = useNavigate();
-
+    const { t } = useTranslation();
+    
     const form = useForm<z.infer<typeof formSchemaRegister>>({
             resolver: zodResolver(formSchemaRegister),
             defaultValues: {
@@ -29,28 +31,29 @@ const RegisterForm = () => {
             },
           })
 
-    const {mutate, isPending, isError} = useMutation({
+    const {mutate, isPending} = useMutation({
         mutationFn: register,
         onSuccess: () => {
             navigate('/dashboard');
-          }
+        },
+        onError: () => {
+            errorAlert("Error al registrar el usuario")
+        }
     })
 
     const onSubmit = (data: z.infer<typeof formSchemaRegister>) => {
-        console.log("hola?")
-            mutate({data})
+        console.log(data)
+        mutate({data})
     }
 
     return (
         <TabsContent value="register">
             <Form {...form}>
-                <form id="register" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Registrar</CardTitle>
-                            <CardDescription>
-                                Puedes registrarte aquí
-                            </CardDescription>
+                            <CardTitle>{t('register.title')}</CardTitle>
+                            <CardDescription>{t('register.description')}</CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-3">
                             <FormField
@@ -125,7 +128,6 @@ const RegisterForm = () => {
                     </Card>
                 </form>
             </Form>
-            {isError && <ErrorAlert errorText="Error al registrar el usuario"/>}   
         </TabsContent>
     )
 }
