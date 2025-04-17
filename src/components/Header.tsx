@@ -1,5 +1,5 @@
 import {useNavigate } from "react-router";
-import { ModeToggle } from "./mode-toggle";
+import { ModeToggle } from "./ModeToggle";
 import { Button } from "./ui/button";
 import { getAuthToken } from "../util/auth";
 import { useTranslation } from "react-i18next";
