@@ -3,16 +3,18 @@ import {
   TabsList,
   TabsTrigger,
 } from "../components/ui/tabs"
-//import LoginForm from "../components/login/LoginForm"
 import RegisterForm from "../components/login/RegisterForm"
 import LoginForm from "../components/login/LoginForm"
+import { useTranslation } from "react-i18next"
 
 const Login =  () => {
+    const {t} = useTranslation();
+
     return (
-        <Tabs defaultValue="login" className="mt-[100px] w-[400px] h-full justify-center self-center m-auto">
+        <Tabs defaultValue="login" className="mt-[50px] w-[400px] h-full justify-center self-center m-auto">
             <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
-                <TabsTrigger value="register">Registrar</TabsTrigger>
+                <TabsTrigger value="login">{t('login.title')}</TabsTrigger>
+                <TabsTrigger value="register">{t('register.title')}</TabsTrigger>
             </TabsList>
             <LoginForm />
             <RegisterForm/>
