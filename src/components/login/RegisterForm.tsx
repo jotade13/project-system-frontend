@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 import { formSchemaRegister } from "../../util/validations";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
-import errorAlert from "../errorAlert";
+import errorAlert from "../alerts/errorAlert";
 import { useTranslation } from "react-i18next";
 
 
@@ -123,7 +123,7 @@ const RegisterForm = () => {
                             />
                         </CardContent>
                         <CardFooter>
-                            {!isPending ? <Button type="submit">Registrarse</Button> :<p>Cargando</p>}
+                            {!isPending ? <Button type="submit">{t('register.title')}</Button> :<p>Cargando</p>}
                         </CardFooter>  
                     </Card>
                 </form>

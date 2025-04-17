@@ -10,5 +10,16 @@
     "register": {
         "title": "Register",
         "description" : "You can register here"
+    },
+    "language":
+    {
+        "spanish":"Spanish",
+        "english":"English"
+    },
+    "theme":
+    {
+        "light":"Light",
+        "dark":"Dark",
+        "system":"System"
     }
 }
