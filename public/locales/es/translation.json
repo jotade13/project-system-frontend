@@ -1,12 +1,14 @@
 {
+    "header":{
+        "title": "Sistema de Gestion de proyectos y tareas",
+        "button": "Salir"
+    },
     "login": {
-        "header":{
-            "title": "Sistema de Gestion de proyectos y tareas",
-            "button": "Salir"
-        },
-            "loginTab": {
-                "title": "Iniciar Sesión",
-                "description" : "Puedes iniciar sesión aquí"
-            }
+        "title": "Iniciar Sesión",
+        "description" : "Puedes iniciar sesión aquí"
+    },
+    "register": {
+        "title": "Registrar",
+        "description" : "Puedes registrarte aquí"
     }
 }

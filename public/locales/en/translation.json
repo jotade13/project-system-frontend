@@ -1,12 +1,14 @@
 {
+    "header":{
+        "title": "Project and Task Management System",
+        "button": "Logout"
+    },
     "login": {
-        "header":{
-            "title": "Project and Task Management System",
-            "button": "Logout"
-        },
-        "loginTab": {
-                "title": "Login",
-                "description" : "You can log in here"
-        }
+        "title": "Login",
+        "description" : "You can log in here"
+    },
+    "register": {
+        "title": "Register",
+        "description" : "You can register here"
     }
 }

@@ -8,10 +8,11 @@ export const formSchemaRegister = z.object({
     email: z.string().email({ message: "Dirección de correo invalida" }),
     password: z.string().min(6,{message: "Contraseña debe tener al menos 6 caracteres"}),
     password_confirmation : z.string().min(6,{message: "Contraseña debe tener al menos 6 caracteres"}),
-}).refine((data) => data.password === data.password_confirmation, {
+})
+/*.refine((data) => data.password === data.password_confirmation, {
     message: "Passwords don't match",
     path: ["confirm"], // path of error
-  });
+  });*/
 
 export const formSchemaLogin = z.object({
     email: z.string().email({ message: "Dirección de correo invalida" }),
