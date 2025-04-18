@@ -4,16 +4,20 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { login } from "../../util/http"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
-import { Input } from "../ui/input"
-import { Button } from "../ui/button"
-import { TabsContent } from "../ui/tabs"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../components/ui/form"
+import { Input } from "../../components/ui/input"
+import { Button } from "../../components/ui/button"
+import { TabsContent } from "../../components/ui/tabs"
 import { useNavigate } from "react-router"
 import { useMutation } from "@tanstack/react-query"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card"
 import { formSchemaLogin } from "../../util/validations"
-import errorAlert from "../alerts/errorAlert"
+import errorAlert from "../../components/alerts/errorAlert"
 import { useTranslation } from "react-i18next"
+import FormFields from "../../components/form/FormFields"
+
+
+const formLogin = [{name:"email",label:"Correo", placeholder:"correo@correo.com",type:"correo"},{name:"password",label:"password", placeholder:"contraseña",type:"password"}]
 
 
 
@@ -57,6 +61,7 @@ const LoginForm = () => {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-3">
+                                <FormFields inputForms={formLogin} control={form.control} />
                                 <FormField
                                 control={form.control}
                                 name="email"

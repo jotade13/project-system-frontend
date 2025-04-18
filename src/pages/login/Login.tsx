@@ -3,8 +3,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "../components/ui/tabs"
-import RegisterForm from "../components/login/RegisterForm"
-import LoginForm from "../components/login/LoginForm"
+import RegisterForm from "./login/RegisterForm"
+import LoginForm from "./login/LoginForm"
 import { useTranslation } from "react-i18next"
 
 const Login =  () => {

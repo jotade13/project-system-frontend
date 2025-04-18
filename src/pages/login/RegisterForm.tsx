@@ -3,16 +3,16 @@
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { TabsContent } from "../ui/tabs";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
-import { Button } from "../ui/button";
+import { TabsContent } from "../../components/ui/tabs";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card";
+import { Button } from "../../components/ui/button";
 import { useMutation } from "@tanstack/react-query"
 import { register } from "../../util/http";
 import { useNavigate } from "react-router";
 import { formSchemaRegister } from "../../util/validations";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
-import { Input } from "../ui/input";
-import errorAlert from "../alerts/errorAlert";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../components/ui/form";
+import { Input } from "../../components/ui/input";
+import errorAlert from "../../components/alerts/errorAlert";
 import { useTranslation } from "react-i18next";
 
 
