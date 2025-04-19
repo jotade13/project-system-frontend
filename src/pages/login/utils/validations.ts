@@ -2,6 +2,8 @@
 
 import { z } from "zod"
 
+export type formSchemaRegisterType = z.infer<typeof formSchemaRegister>;
+
 export const formSchemaRegister = z.object({
     first_name: z.string().min(3,{message: "El nombre debe tener al menos 3 caracteres"}),
     last_name: z.string().min(3,{message: "El apellido debe tener al menos 3 caracteres"}),
@@ -13,6 +15,7 @@ export const formSchemaRegister = z.object({
     message: "Passwords don't match",
     path: ["confirm"], // path of error
   });*/
+export type formSchemaLoginType = z.infer<typeof formSchemaLogin>;
 
 export const formSchemaLogin = z.object({
     email: z.string().email({ message: "Dirección de correo invalida" }),
