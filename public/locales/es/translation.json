@@ -5,11 +5,33 @@
     },
     "login": {
         "title": "Iniciar Sesión",
-        "description" : "Puedes iniciar sesión aquí"
+        "description" : "Puedes ingresar aquí",
+        "label": {
+            "email": "Correo",
+            "password": "Contraseña"
+        },
+        "placeholder": { 
+            "email": "correo@corre.com",
+            "password": "Contraseña"
+        }
     },
     "register": {
         "title": "Registrar",
-        "description" : "Puedes registrarte aquí"
+        "description" : "Puedes registrarte aquí",
+        "label": {
+            "email": "Correo",
+            "password": "Contraseña",
+            "first_name":"Nombre",
+            "last_name":"Apellido",
+            "password_confirmation": "Confirmar contraseña"
+        },
+        "placeholder": { 
+            "email": "correo@corre.com",
+            "password": "Contraseña",
+            "first_name":"Nombre",
+            "last_name":"Apellido",
+            "password_confirmation": "Contraseña"
+        }
     },
     "language":
     {

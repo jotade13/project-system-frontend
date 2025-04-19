@@ -3,16 +3,16 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/
 import { Input } from '../ui/input';
 
 
-interface inputProps <T extends FieldValues> {
+export interface FormInputProps <T extends FieldValues> {
     name: Path<T>;
     label?: string;
     placeholder?: string;
     type?: React.HTMLInputTypeAttribute;
-    control: Control<T>
+    control?: Control<T>
 }
 
 
-const FormInput = <T extends FieldValues>({name,label,placeholder,type,control}:inputProps<T>) =>{
+const FormInput = <T extends FieldValues>({name,label,placeholder,type,control}:FormInputProps<T>) =>{
     return (
         <FormField
         control={control}

@@ -1,33 +1,14 @@
-import { Control, FieldValues, FieldPath} from 'react-hook-form';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
-import { Input } from '../ui/input';
+import {Control, FieldValues} from 'react-hook-form';
+import FormInput, { FormInputProps } from './FormInput';
 
-interface inputProps <TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> {
-    name: string,
-    label: TName,
-    placeholder?: string,
-    type?: React.HTMLInputTypeAttribute,
+export interface FormFieldProps <T extends FieldValues>{ 
+    inputForms: FormInputProps<T>[];
+    control: Control<T>;
 }
-
-interface formProps extends inputProps = { 
-    inputForms: inputProps[];
-    control?: Control<TFieldValues>
-}
-const FormFields = ({inputForms, control }:<formProps>) => {
+const FormFields = <T extends FieldValues>({inputForms,control}:FormFieldProps<T>) => {
     return (
         <>
-            {inputForms.map(item => (<FormField
-                                control={control}
-                                name={item.name}
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>{item.label}</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder={item.placeholder} type={item.type }{...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}/>))}
+            {inputForms.map(item => (<FormInput key={item.name} name={item.name} label={item.label} placeholder={item.placeholder} type={item.type} control={control} />))}
         </>
     )
 }

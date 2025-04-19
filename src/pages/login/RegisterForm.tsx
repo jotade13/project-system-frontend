@@ -3,22 +3,24 @@
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { TabsContent } from "../../components/ui/tabs";
+import { TabsContent } from "../../components/ui/Tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { useMutation } from "@tanstack/react-query"
-import { register } from "../../util/http";
+import { register } from "./utils/http";
 import { useNavigate } from "react-router";
-import { formSchemaRegister } from "../../util/validations";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../components/ui/form";
-import { Input } from "../../components/ui/input";
+import { formSchemaRegister } from "./utils/validations";
+import { Form} from "../../components/ui/form";
 import errorAlert from "../../components/alerts/errorAlert";
 import { useTranslation } from "react-i18next";
+import FormFields from "../../components/form/FormFields";
+import useFormRegister from "./Hooks/useFormRegister";
 
 
 const RegisterForm = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const formRegister = useFormRegister();
     
     const form = useForm<z.infer<typeof formSchemaRegister>>({
             resolver: zodResolver(formSchemaRegister),
@@ -29,7 +31,7 @@ const RegisterForm = () => {
               password: "",
               password_confirmation: ""
             },
-          })
+    })
 
     const {mutate, isPending} = useMutation({
         mutationFn: register,
@@ -56,71 +58,7 @@ const RegisterForm = () => {
                             <CardDescription>{t('register.description')}</CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-3">
-                            <FormField
-                                        control={form.control}
-                                        name="first_name"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Nombre</FormLabel>
-                                                <FormControl>
-                                                    <Input placeholder="Nombre" type="text" {...field} />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                            />
-                            <FormField
-                                        control={form.control}
-                                        name="last_name"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Apelido</FormLabel>
-                                                <FormControl>
-                                                    <Input placeholder="Apellido" type="text" {...field} />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                            />
-                            <FormField
-                                    control={form.control}
-                                    name="email"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Correo</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="correo@corre.com" type="email" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                            />
-                            <FormField
-                            control={form.control}
-                            name="password"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Contraseña</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Contraseña" type="password" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                            />
-                            <FormField
-                            control={form.control}
-                            name="password_confirmation"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Confirmar contraseña</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Contraseña" type="password" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                            />
+                           <FormFields inputForms={formRegister} control={form.control} />
                         </CardContent>
                         <CardFooter>
                             {!isPending ? <Button type="submit">{t('register.title')}</Button> :<p>Cargando</p>}

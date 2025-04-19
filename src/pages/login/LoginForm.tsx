@@ -1,38 +1,32 @@
 "use client"
 
-import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { login } from "../../util/http"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../components/ui/form"
-import { Input } from "../../components/ui/input"
+import { login } from "./utils/http"
+import { Form} from "../../components/ui/form"
 import { Button } from "../../components/ui/button"
-import { TabsContent } from "../../components/ui/tabs"
+import { TabsContent } from "../../components/ui/Tabs"
 import { useNavigate } from "react-router"
 import { useMutation } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card"
-import { formSchemaLogin } from "../../util/validations"
+import { formSchemaLogin, formSchemaLoginType } from "./utils/validations"
 import errorAlert from "../../components/alerts/errorAlert"
 import { useTranslation } from "react-i18next"
 import FormFields from "../../components/form/FormFields"
-
-
-const formLogin = [{name:"email",label:"Correo", placeholder:"correo@correo.com",type:"correo"},{name:"password",label:"password", placeholder:"contraseña",type:"password"}]
-
-
+import  useFormLogin  from "./Hooks/useFormLogin"
 
 const LoginForm = () => {
-
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const formLogin = useFormLogin();
 
-    const form = useForm<z.infer<typeof formSchemaLogin>>({
+    const form = useForm<formSchemaLoginType>({
         resolver: zodResolver(formSchemaLogin),
         defaultValues: {
           email: "",
           password: ""
         },
-      })
+    })
 
     const {mutate, isPending} = useMutation({
         mutationFn: login,
@@ -44,14 +38,14 @@ const LoginForm = () => {
         }
     })
 
-    const onSubmit = (data: z.infer<typeof formSchemaLogin>) => {
+    const onSubmit = (data: formSchemaLoginType) => {
         mutate({data})
     }
 
 
     return (
         <TabsContent value="login">
-                <Form {...form}>
+                <Form {...form} >
                     <form id="login" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <Card>
                             <CardHeader>
@@ -61,37 +55,11 @@ const LoginForm = () => {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-3">
-                                <FormFields inputForms={formLogin} control={form.control} />
-                                <FormField
-                                control={form.control}
-                                name="email"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Correo</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="correo@corre.com" type="email" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                                />
-                                <FormField
-                                control={form.control}
-                                name="password"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Contraseña</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Contraseña" type="password" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                                />
-                                </CardContent>
-                                <CardFooter>
-                                    {!isPending ? <Button type="submit">{t("login.title")}</Button> : <p>Cargando</p>}
-                                </CardFooter>
+                                <FormFields inputForms={formLogin} control={form.control}  />
+                            </CardContent>
+                            <CardFooter>
+                                {!isPending ? <Button type="submit">{t("login.title")}</Button> : <p>Cargando</p>}
+                            </CardFooter>
                         </Card>
                     </form>
                 </Form>
