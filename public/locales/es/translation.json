@@ -1,7 +1,10 @@
 {
     "header":{
         "title": "Sistema de Gestion de proyectos y tareas",
-        "button": "Salir"
+        "button": "Salir",
+        "dashboard":"Panel",
+        "tasks": "Tareas",
+        "projects": "Proyectos"
     },
     "login": {
         "title": "Iniciar Sesión",
@@ -43,5 +46,13 @@
         "light":"Claro",
         "dark":"Oscuro",
         "system":"Sistema"
+    },
+    "tasks":
+    {
+        "create":
+        {
+            "button": "Crear Tarea",
+            "title": "Nueva Tarea"
+        } 
     }
 }
