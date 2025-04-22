@@ -1,7 +1,10 @@
 {
     "header":{
         "title": "Project and Task Management System",
-        "button": "Logout"
+        "button": "Logout",
+        "dashboard":"Dashboard",
+        "tasks": "Tasks",
+        "projects": "Projects"
     },
     "login": {
         "title": "Login",
@@ -35,5 +38,13 @@
         "light":"Light",
         "dark":"Dark",
         "system":"System"
+    },
+    "tasks":
+    {
+        "create":
+        {
+            "button": "Crear Task",
+            "title": "New Task"
+        } 
     }
 }
