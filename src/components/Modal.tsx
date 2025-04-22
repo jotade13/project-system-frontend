@@ -1,18 +1,19 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../components/ui/dialog";
 import { Button } from "../components/ui/button";
 import { useTranslation } from "react-i18next";
 
 interface ModalProps extends React.PropsWithChildren{
     buttonTitle:string,
-    title: string
+    title: string,
+    buttonInModal: string
 }
 
-const Modal = ({buttonTitle,title,children}:ModalProps) => {
+const Modal = ({buttonTitle,title,buttonInModal,children}:ModalProps) => {
     const {t} = useTranslation()
 
     return (
     <Dialog>
-        <DialogTrigger>
+        <DialogTrigger asChild>
             <Button>{t(buttonTitle)}</Button>
         </DialogTrigger>
         <DialogContent>
@@ -20,7 +21,10 @@ const Modal = ({buttonTitle,title,children}:ModalProps) => {
                 <DialogTitle>{t(title)}</DialogTitle>
             </DialogHeader>
             {children}
-        </DialogContent>
+            <DialogFooter>
+                <Button type="submit">{buttonInModal}</Button>
+            </DialogFooter>
+        </DialogContent> 
     </Dialog>
     )
 }

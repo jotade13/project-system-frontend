@@ -12,12 +12,12 @@ export interface FormSelectProps <T extends FieldValues> {
     selectItems: SelectItemProps[]
 }
 
-interface SelectItemProps{
+export interface SelectItemProps{
     value: string,
     valueTitle: string
 }
 
-const FormInput = <T extends FieldValues>({name,label,placeholder,control,selectItems}:FormSelectProps<T>) =>{
+const FormSelect = <T extends FieldValues>({name,label,placeholder,control,selectItems}:FormSelectProps<T>) =>{
     return (
         <FormField
           control={control}
@@ -32,7 +32,7 @@ const FormInput = <T extends FieldValues>({name,label,placeholder,control,select
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {selectItems.map(item => <SelectItem value={item.value}>{item.valueTitle}</SelectItem>)}
+                  {selectItems.map(item => <SelectItem key={item.value} value={item.value}>{item.valueTitle}</SelectItem>)}
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -42,4 +42,4 @@ const FormInput = <T extends FieldValues>({name,label,placeholder,control,select
     )
 }
 
-export default FormInput;
+export default FormSelect;
