@@ -5,16 +5,17 @@ import { useTranslation } from "react-i18next";
 interface ModalProps extends React.PropsWithChildren{
     buttonTitle:string,
     title: string,
-    buttonInModal: string
+    buttonInModal: string,
+    openModal(): void
 }
 
-const Modal = ({buttonTitle,title,buttonInModal,children}:ModalProps) => {
+const Modal = ({buttonTitle,title,buttonInModal,children,openModal}:ModalProps) => {
     const {t} = useTranslation()
 
     return (
     <Dialog>
         <DialogTrigger asChild>
-            <Button>{t(buttonTitle)}</Button>
+            <Button onClick={openModal}>{t(buttonTitle)}</Button>
         </DialogTrigger>
         <DialogContent>
             <DialogHeader>
