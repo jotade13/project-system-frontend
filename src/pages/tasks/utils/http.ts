@@ -7,7 +7,7 @@ const url = "http://127.0.0.1:8000/api/"
 interface dataNewTask {
     data : formSchemaTaskType
 }
-type dataUpdateTask = {
+/*type dataUpdateTask = {
     data : {
         first_name:string,
         last_name:string,
@@ -15,7 +15,7 @@ type dataUpdateTask = {
         password: string,
         password_confirmation:string  
     }
-}
+}*/
 
 export async function newTask(dataNewTask:dataNewTask) {
 
@@ -29,6 +29,24 @@ export async function newTask(dataNewTask:dataNewTask) {
 
     if (!response.ok) {
         const error = new Error('An error occurred while logging in this page');
+        throw error;
+    }
+
+    const data = await response.json();
+    console.log(data)
+}
+export async function getTasks(token:string|null)  {
+
+    const response = await fetch(url+"tasks",{
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'bearer-token': `Bearer ${token}`
+    }
+    });
+
+    if (!response.ok) {
+        const error = new Error('An error occurred while fetching Tasks');
         throw error;
     }
 

@@ -1,6 +1,6 @@
 import { redirect } from "react-router"
 
-export const getAuthToken = () => {
+export const getAuthToken =  () : string|null  =>  {
     const token = localStorage.getItem('token')
     return token
 }
