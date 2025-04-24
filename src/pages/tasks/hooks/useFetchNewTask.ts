@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 
 const useFetchNewTask = (): {mutate:UseMutateFunction<void, Error, dataNewTask, unknown>} => {
     const Navigate = useNavigate();
-    const {mutate} = useMutation({
+    const {mutate} =  useMutation({
         mutationFn: newTask,
         onSuccess: () => {
             Navigate('/tasks');

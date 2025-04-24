@@ -91,6 +91,30 @@ export async function getUsers(token:string|null)  {
     }
 
 }
+export async function deleteTask(id:string)  {
+    const token = getAuthToken()
+    try {
+        const response = await fetch(url+"tasks/"+id,{
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+        });
+
+        if (!response.ok) {
+            const error = new Error('An error occurred deleting Task');
+            throw error;
+        }
+        const data = await response.json();
+        console.log(data)
+        return data; 
+    }
+    catch (error) {
+        console.error("Error in deletTask:", error);
+        throw error; 
+    } 
+}
 /*
 export async function register(dataRegister:dataRegister) {
 

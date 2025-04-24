@@ -1,12 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery,UseQueryResult } from "@tanstack/react-query";
 import { getTasks } from "../utils/http";
 
-const useFetchTasks = () : { data: any, isLoading?: boolean, error?: Error | null} => {
-    const { data, isLoading, error } = useQuery({
+const useFetchTasks = (): UseQueryResult => {
+    const tasks = useQuery({
         queryKey: ['tasks'],
         queryFn: () => getTasks()
     });
 
-    return {data, isLoading, error}
+    return tasks
 }
 export default useFetchTasks
