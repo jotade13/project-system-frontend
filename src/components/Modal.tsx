@@ -5,11 +5,10 @@ import { useTranslation } from "react-i18next";
 interface ModalProps extends React.PropsWithChildren{
     buttonTitle:string,
     title: string,
-    buttonInModal: string,
     openModal(): void
 }
 
-const Modal = ({buttonTitle,title,buttonInModal,children,openModal}:ModalProps) => {
+const Modal = ({buttonTitle,title,children,openModal}:ModalProps) => {
     const {t} = useTranslation()
 
     return (
@@ -22,9 +21,6 @@ const Modal = ({buttonTitle,title,buttonInModal,children,openModal}:ModalProps) 
                 <DialogTitle>{t(title)}</DialogTitle>
             </DialogHeader>
             {children}
-            <DialogFooter>
-                <Button type="submit">{buttonInModal}</Button>
-            </DialogFooter>
         </DialogContent> 
     </Dialog>
     )
