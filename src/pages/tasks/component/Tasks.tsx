@@ -1,15 +1,21 @@
+import useFetchDeleteTask from "../hooks/useFetchDeleteTask";
 import useFetchTasks from "../hooks/useFetchTasks";
 import CardsTasks from "./CardsTasks";
 import FormTask from "./FormTask";
 
 
+
 const Tasks =  () => {
-    const {data,isLoading} = useFetchTasks();
+    const tasks = useFetchTasks();  
+    const {deleteTaskId} = useFetchDeleteTask();
+    const handleDelete = (id:string) => {
+        console.log(id)
+    }
      
     return (
     <div className="flex mt-8">
         <FormTask />
-        {!isLoading ?  <CardsTasks tasks={data} />:     <p>Cargando</p>}
+        {tasks.isSuccess ?  <CardsTasks tasks={tasks.data} handleDelete={()=>handleDelete} /> : <p>Cargando</p>}
         
     </div>
     )

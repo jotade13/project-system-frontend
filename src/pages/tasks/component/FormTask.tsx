@@ -5,12 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import Modal from "../../../components/Modal"
 import FormInput from "../../../components/form/FormInput"
 import FormSelect from "../../../components/form/FormSelect"
-import useFormTask from "../hooks/useFormNewTask"
 import useFetchProjects from "../hooks/useFetchProjects"
 import useFetchUsers from "../hooks/useFetchUsers"
 import useFetchNewTask from "../hooks/useFetchNewTask"
 import { Button } from "../../../components/ui/button"
 import { DialogFooter } from "../../../components/ui/dialog"
+import useFormSelects from "../hooks/useFormSelects"
 
 const FormTask = () => {
     
@@ -22,7 +22,7 @@ const FormTask = () => {
         }
     })
 
-    const {selectStatus,selectPriority} = useFormTask();
+    const {selectStatus,selectPriority} = useFormSelects();
     const {projects} = useFetchProjects();
     const {users} = useFetchUsers();
     const {mutate} = useFetchNewTask();

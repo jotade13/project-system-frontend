@@ -1,7 +1,7 @@
 //import { useTranslation } from "react-i18next"
 import { SelectItemProps } from "../../../components/form/FormSelect"
 
-const useFormTask = () : {selectStatus: SelectItemProps[], selectPriority :SelectItemProps[] } => {
+const useFormSelects = () : {selectStatus: SelectItemProps[], selectPriority :SelectItemProps[] } => {
    // const {t} = useTranslation()
     
    
@@ -18,4 +18,4 @@ const useFormTask = () : {selectStatus: SelectItemProps[], selectPriority :Selec
 
     return {selectStatus,selectPriority}
 }
-export default useFormTask
+export default useFormSelects

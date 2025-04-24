@@ -3,7 +3,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import GuestLayout from "./layouts/GuestLayout";
 import Login from "./pages/login/Login";
 import Tasks from "./pages/tasks/component/Tasks";
-import Projects from "./pages/projects/Projects";
+import Projects from "./pages/projects/components/Projects";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { checkAuthLoader, checkUnauthLoader } from "./util/auth";
 
