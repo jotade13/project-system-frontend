@@ -1,10 +1,11 @@
 import { QueryClient} from "@tanstack/react-query";
 import {formSchemaTaskType } from "./validations";
+import { getAuthToken } from "../../../util/auth";
 
 export const queryClient = new QueryClient();
 const url = "http://127.0.0.1:8000/api/"
 
-interface dataNewTask {
+export interface dataNewTask {
     data : formSchemaTaskType
 }
 /*type dataUpdateTask = {
@@ -18,40 +19,77 @@ interface dataNewTask {
 }*/
 
 export async function newTask(dataNewTask:dataNewTask) {
+    const token = getAuthToken()
 
-    const response = await fetch(url+"tasks",{
-    method: 'POST',
-    body: JSON.stringify(dataNewTask.data),
-    headers: {
-      'Content-Type': 'application/json'
+    try{
+        const response = await fetch(url+"tasks",{
+            method: 'POST',
+            body: JSON.stringify(dataNewTask.data),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+            });
+        
+            if (!response.ok) {
+                const error = new Error('An error occurred while ');
+                throw error;
+            }
+            const data = await response.json();
+            return data;
+    }catch (error) {
+        console.error("Error in PostTasks:", error);
+        throw error; 
     }
-    });
-
-    if (!response.ok) {
-        const error = new Error('An error occurred while logging in this page');
-        throw error;
-    }
-
-    const data = await response.json();
-    console.log(data)
+    
 }
-export async function getTasks(token:string|null)  {
+export async function getTasks()  {
+    const token = getAuthToken()
+    try {
+        const response = await fetch(url+"tasks",{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+        });
 
-    const response = await fetch(url+"tasks",{
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'bearer-token': `Bearer ${token}`
+        if (!response.ok) {
+            const error = new Error('An error occurred while fetching Tasks');
+            throw error;
+        }
+        const data = await response.json();
+        console.log(data)
+        return data; 
     }
-    });
+    catch (error) {
+        console.error("Error in getTask:", error);
+        throw error; 
+    } 
+}
+export async function getUsers(token:string|null)  {
 
-    if (!response.ok) {
-        const error = new Error('An error occurred while fetching Tasks');
-        throw error;
+    try {
+        const response = await fetch(url + "users",{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+        });
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => null);
+            throw new Error(errorData?.message || 'Failed to fetch users');
+        }
+        const data = await response.json();
+        console.log(data)
+        return data;
+    }
+    catch (error) {
+        console.error("Error in getUsers:", error);
+        throw error; 
     }
 
-    const data = await response.json();
-    console.log(data)
 }
 /*
 export async function register(dataRegister:dataRegister) {

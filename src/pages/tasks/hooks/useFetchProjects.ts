@@ -3,12 +3,12 @@ import { getProjects } from "../../projects/utils/http";
 import { getAuthToken } from "../../../util/auth";
 import { SelectItemProps } from "../../../components/form/FormSelect";
 
-interface Project {
+/*interface Project {
     id: number;
     name: string;
     description: string;
     owner_id: number
-}
+}*/
 
 const useFetchProjects = (): {
     projects: SelectItemProps[];

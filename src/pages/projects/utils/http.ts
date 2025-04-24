@@ -17,10 +17,9 @@ export async function getProjects(token:string|null)  {
     }
 
     const data = await response.json();
-    console.log(data);
-    return data; // No olvides retornar los datos
+    return data;
   } catch (error) {
     console.error("Error in getProjects:", error);
-    throw error; // Re-lanza el error para manejarlo donde se llame a la función
+    throw error; 
   }
 }
