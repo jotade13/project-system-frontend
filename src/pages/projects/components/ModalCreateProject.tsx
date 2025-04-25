@@ -1,37 +1,30 @@
+import { FormInput } from "lucide-react"
 import Modal from "../../../components/Modal"
 import { Form } from "../../../components/ui/form"
 import { DialogFooter } from "../../../components/ui/dialog"
 import { Button } from "../../../components/ui/button"
 import { UseFormReturn } from "react-hook-form"
-import FormInput from "../../../components/form/FormInput"
-import useFormSelects from "../hooks/useFormSelect"
-import FormSelect from "../../../components/form/FormSelect"
+import { formSchemaProjectType } from "../utils/validations"
+import useNewProject from "../hooks/useNewProject"
 
-interface PropsModalProject
-{
-    form: UseFormReturn,
-    onSubmit:() => void,
-    buttonTitle: string
-    title:string,
-}
 
-const ModalProject = ({form,onSubmit,buttonTitle,title}:PropsModalProject) => {
+const ModalCreateProject = () => {
 
-    const {selectStatus} = useFormSelects()
+    const {form,onSubmit} = useNewProject()
 
     return (
-        <Modal buttonTitle={buttonTitle} title={title}>
+        <Modal buttonTitle="Crear Proyecto" title="Nuevo Proyecto">
             <Form {...form} >
                 <form id="projects" onSubmit={form.handleSubmit(onSubmit)} className="space-y-3    ">
                     <FormInput name="name" label="Titulo" placeholder="Titulo" type="text" control={form.control} />
                     <FormInput name="description" label="Descripción" placeholder="Descripción" type="text" control={form.control} />
-                    <FormSelect name="status" selectItems={selectStatus} placeholder="Selecccione un proyecto" label="Proyecto" control={form.control} />
                     <DialogFooter>
-                        <Button type="submit">{buttonTitle}</Button>
+                        <Button type="submit">Crear Tarea</Button>
                     </DialogFooter>
                 </form>
             </Form>  
         </Modal>
     )
+
 }
-export default ModalProject
+export default ModalCreateProject

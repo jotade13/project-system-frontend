@@ -1,14 +1,17 @@
 import TableCells, { cells } from "./TableCells"
-import { TableRow } from "./ui/table"
+import { Button } from "./ui/button"
+import { TableCell, TableRow } from "./ui/table"
 
 export interface Rows {
     rows:cells[]
+    deleteItem: () => void
 }
 
-const TableRows = ({rows}:Rows) =>{
+const TableRows = ({rows,deleteItem}:Rows[]) =>{
+    console.log(rows)
     return (
         <>
-            {rows.map((item) => <TableRow><TableCells data={item.data}/></TableRow>)}
+            {rows.map((row) => <TableRow key={row}><TableCells data={row}/>{deleteItem && <TableCell><Button variant="destructive" onClick={()=>deleteItem(rows.id)} >Delete</Button></TableCell>}</TableRow>)}
         </>
     )
 }
