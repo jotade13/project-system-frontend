@@ -6,22 +6,23 @@ import { Table, TableBody, TableCaption,  TableHeader, TableRow, } from "./ui/ta
 interface TableProps {
     caption: string,
     head:string[],
-    products: cells[]
+    data: cells[],
+    deleteItem: () => void
 }
 
-const table = ({caption,head,products}:TableProps) => {
+const TableComp = ({caption,head,data,deleteItem}:TableProps) => {
     return (
-    <Table>
-        <TableCaption>{caption}</TableCaption>
-        <TableHeader>
-            <TableRow>
-            <TableHeads head={head}/>
-            </TableRow>
-        </TableHeader>
-        <TableBody>
-            <TableRows rows={products}/>
-        </TableBody>
-    </Table>
+        <Table>
+            <TableCaption>{caption}</TableCaption>
+            <TableHeader>
+                <TableRow>
+                <TableHeads head={head}/>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                <TableRows rows={data} deleteItem={deleteItem}/>
+            </TableBody>
+        </Table>
     )
 }
-export default table
+export default TableComp

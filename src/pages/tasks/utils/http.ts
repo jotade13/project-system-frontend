@@ -115,23 +115,3 @@ export async function deleteTask(id:string)  {
         throw error; 
     } 
 }
-/*
-export async function register(dataRegister:dataRegister) {
-
-    const response = await fetch(url+"register",{
-    method: 'POST',
-    body: JSON.stringify(dataRegister.data),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-    });
-
-    if (!response.ok) {
-        const error = new Error('An error occurred while logging in this page');
-        throw error;
-    }
-    const data = await response.json();
-    const token = data.token;
-    localStorage.setItem('token',token)
-}
-*/

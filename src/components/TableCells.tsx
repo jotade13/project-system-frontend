@@ -6,6 +6,7 @@ export interface cells {
 
 
 const TableCells = ({data}:cells) =>{
+    console.log(data)
     return (
         <>
             {data.map((item) => <TableCell>{item}</TableCell>)}
