@@ -1,7 +1,14 @@
 import { getAuthToken } from "../../../util/auth";
 import { dataNewProject } from "./interfaces";
+import { formSchemaProjectType } from "./validations";
 
 const url = "http://127.0.0.1:8000/api/"
+
+export interface UpdateProjectProps {
+    dataProject: formSchemaProjectType,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    id:any
+}   
 export async function getProjects(token:string|null)  {
   try {
     if (!token) throw new Error("No token provided");
@@ -66,11 +73,34 @@ export async function deleteProject(id:string)  {
             throw error;
         }
         const data = await response.json();
-        console.log(data)
         return data; 
     }
     catch (error) {
         console.error("Error in deleteProject:", error);
         throw error; 
     } 
+}
+export async function updateProject({dataProject,id}:UpdateProjectProps)  {
+  const token = getAuthToken()
+  try {
+      const response = await fetch(url+"projects/"+id,{
+      method: 'PUT',
+      body: JSON.stringify(dataProject),
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+      }
+      });
+
+      if (!response.ok) {
+          const error = new Error('An error occurred updating project');
+          throw error;
+      }
+      const data = await response.json();
+      return data; 
+  }
+  catch (error) {
+      console.error("Error in updateProject:", error);
+      throw error; 
+  } 
 }

@@ -25,8 +25,8 @@ const  useFetchProjects =  () : {
     const projects = data 
         ? data.data.map((project:Projects) => ({
             cells:[project.name, project.description,project.status],
-            id:project.id
-          }))
+            project:project
+        }))
         : [];
 
     return {

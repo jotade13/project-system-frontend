@@ -15,7 +15,7 @@ const useFetchUsers = (): {
 
     const usersSelect = data 
         ? data.data.map((users) => ({
-            value: users.id,
+            value: users.id.toString(),
             valueTitle: users.first_name
           }))
         : [];

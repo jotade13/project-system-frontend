@@ -1,7 +1,7 @@
-import { UseMutationResult } from "@tanstack/react-query"
 import { Button } from "../../../components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../components/ui/card"
 import useFetchDeleteTask from "../hooks/useFetchDeleteTask"
+import EditTask from "./EditTask"
 
 export interface CardTaskProps  {
     task: any,
@@ -30,7 +30,7 @@ const CardTask = ({task}:CardTaskProps) => {
                 <CardDescription>{task.priority}</CardDescription>
             </CardContent>
             <CardFooter className="flex justify-between">
-                <Button >Editar</Button>
+                <EditTask task={task} />
                 <Button onClick={()=>handleDelete(task.id)} variant="destructive">Eliminar</Button>
             </CardFooter>
         </Card>

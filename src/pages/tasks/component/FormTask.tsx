@@ -9,7 +9,7 @@ import useFetchProjects from "../hooks/useFetchProjects"
 import useFetchUsers from "../hooks/useFetchUsers"
 import useFetchNewTask from "../hooks/useFetchNewTask"
 import { Button } from "../../../components/ui/button"
-import { DialogFooter } from "../../../components/ui/dialog"
+import { DialogClose, DialogFooter } from "../../../components/ui/dialog"
 import useFormSelects from "../hooks/useFormSelects"
 
 const FormTask = () => {
@@ -25,19 +25,15 @@ const FormTask = () => {
     const {selectStatus,selectPriority} = useFormSelects();
     const {projects} = useFetchProjects();
     const {users} = useFetchUsers();
-    const {mutate} = useFetchNewTask();
+    const {mutate} = useFetchNewTask(form);
    
     const onSubmit = (data:formSchemaTaskType) => {
         mutate({data})
     }
     
-    const openModal = () => {
-        
-    }
-    
     return (
         
-        <Modal buttonTitle="Crear Tarea" title="Nueva Tarea" openModal={openModal}>
+        <Modal buttonTitle="Crear Tarea" title="Nueva Tarea">
             <Form {...form} >
                 <form id="login" onSubmit={form.handleSubmit(onSubmit)} className="space-y-3    ">
                     <FormInput name="title" label="Titulo" placeholder="Titulo" type="text" control={form.control} />
@@ -47,7 +43,9 @@ const FormTask = () => {
                     <FormSelect name="status" placeholder="Selecccione un estado" selectItems={selectStatus} label="Estado" control={form.control} />
                     <FormSelect name="priority" placeholder="Selecccione una prioridad" selectItems={selectPriority} label="Prioridad" control={form.control} />
                     <DialogFooter>
-                        <Button type="submit">Crear Tarea</Button>
+                        <DialogClose asChild>
+                            <Button type="submit">Crear Tarea</Button>
+                        </DialogClose>
                     </DialogFooter>
                 </form>
             </Form>

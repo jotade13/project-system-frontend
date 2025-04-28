@@ -1,15 +1,14 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
 import { deleteProject } from "../utils/http";
 
 const useDeleteProject = () : {deleteProjectId:UseMutationResult<void, Error, string, unknown>} =>  {
+    const queryClient = useQueryClient()
     const deleteProjectId = useMutation({
+        
         mutationFn: deleteProject,
-       /* onSuccess: () => {
-            // Actualizar la caché local con invalidateQueries
-            queryClient.invalidateQueries({
-              queryKey: ['projects']
-            })
-        }*/
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['projects']})
+        }
     })
 
     return {deleteProjectId}

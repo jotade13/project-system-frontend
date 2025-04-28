@@ -19,11 +19,9 @@ const useFetchProjects = (): {
         queryKey: ['projects'],
         queryFn: () => getProjects(getAuthToken())
     });
-    console.log (data)
-    // Transformación de datos
     const projectSelect = data 
         ? data.data.map((project) => ({
-            value: project.id,
+            value: project.id.toString(),
             valueTitle: project.name
           }))
         : [];
