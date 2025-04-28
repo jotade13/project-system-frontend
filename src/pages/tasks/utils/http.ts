@@ -5,9 +5,14 @@ import { getAuthToken } from "../../../util/auth";
 export const queryClient = new QueryClient();
 const url = "http://127.0.0.1:8000/api/"
 
-export interface dataNewTask {
+export interface dataTask {
     data : formSchemaTaskType
 }
+export interface UpdateTask {
+    dataTask: formSchemaTaskType,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    id:any
+}   
 /*type dataUpdateTask = {
     data : {
         first_name:string,
@@ -18,13 +23,13 @@ export interface dataNewTask {
     }
 }*/
 
-export async function newTask(dataNewTask:dataNewTask) {
+export async function newTask(dataTask:dataTask) {
     const token = getAuthToken()
 
     try{
         const response = await fetch(url+"tasks",{
             method: 'POST',
-            body: JSON.stringify(dataNewTask.data),
+            body: JSON.stringify(dataTask.data),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -59,7 +64,6 @@ export async function getTasks()  {
             throw error;
         }
         const data = await response.json();
-        console.log(data)
         return data; 
     }
     catch (error) {
@@ -82,7 +86,6 @@ export async function getUsers(token:string|null)  {
             throw new Error(errorData?.message || 'Failed to fetch users');
         }
         const data = await response.json();
-        console.log(data)
         return data;
     }
     catch (error) {
@@ -107,11 +110,57 @@ export async function deleteTask(id:string)  {
             throw error;
         }
         const data = await response.json();
-        console.log(data)
         return data; 
     }
     catch (error) {
         console.error("Error in deletTask:", error);
+        throw error; 
+    } 
+}
+export async function showTask(id:string)  {
+    const token = getAuthToken()
+    try {
+        const response = await fetch(url+"tasks/"+id,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+        });
+
+        if (!response.ok) {
+            const error = new Error('An error occurred deleting Task');
+            throw error;
+        }
+        const data = await response.json();
+        return data; 
+    }
+    catch (error) {
+        console.error("Error in deletTask:", error);
+        throw error; 
+    } 
+}
+export async function updateTask({dataTask,id}:UpdateTask)  {
+    const token = getAuthToken()
+    try {
+        const response = await fetch(url+"tasks/"+id,{
+        method: 'PUT',
+        body: JSON.stringify(dataTask),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+        });
+
+        if (!response.ok) {
+            const error = new Error('An error occurred updating Task');
+            throw error;
+        }
+        const data = await response.json();
+        return data; 
+    }
+    catch (error) {
+        console.error("Error in updateTask:", error);
         throw error; 
     } 
 }

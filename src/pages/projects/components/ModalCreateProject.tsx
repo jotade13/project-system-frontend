@@ -3,8 +3,6 @@ import Modal from "../../../components/Modal"
 import { Form } from "../../../components/ui/form"
 import { DialogFooter } from "../../../components/ui/dialog"
 import { Button } from "../../../components/ui/button"
-import { UseFormReturn } from "react-hook-form"
-import { formSchemaProjectType } from "../utils/validations"
 import useNewProject from "../hooks/useNewProject"
 
 

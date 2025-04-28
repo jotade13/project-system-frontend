@@ -1,12 +1,11 @@
 import { TableCell } from "./ui/table"
 
-export interface cells {
+export interface PropCells {
     data: string[]
 }
 
 
-const TableCells = ({data}:cells) =>{
-    console.log(data)
+const TableCells = ({data}:PropCells) =>{
     return (
         <>
             {data.map((item) => <TableCell>{item}</TableCell>)}

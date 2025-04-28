@@ -44,7 +44,6 @@ const RegisterForm = () => {
     })
 
     const onSubmit = (data: z.infer<typeof formSchemaRegister>) => {
-        console.log(data)
         mutate({data})
     }
 
