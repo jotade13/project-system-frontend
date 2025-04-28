@@ -11,8 +11,12 @@ const Projects =  () => {
     
     return (
         <>
-            <NewProject />
-            {!isLoading ? <Table caption="Projects" head={tableHeads} data={projects} deleteItem={deleteProjectId.mutate} edit />: <p>Cargando</p>}
+            <div className="flex justify-end-safe mr-48 mt-8 ">
+                <NewProject />
+            </div>
+            <div className= "px-40 bg-white">
+                {!isLoading ? <Table caption="Projects" head={tableHeads} data={projects} deleteItem={deleteProjectId.mutate} edit />: <p>Cargando</p>}
+            </div>
         </>
     )
 }

@@ -8,7 +8,7 @@ export interface PropCells {
 const TableCells = ({data}:PropCells) =>{
     return (
         <>
-            {data.map((item) => <TableCell>{item}</TableCell>)}
+            {data.map((item) => <TableCell className="text-center">{item}</TableCell>)}
         </>
     )
 }
