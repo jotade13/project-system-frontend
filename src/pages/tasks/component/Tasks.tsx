@@ -13,11 +13,14 @@ const Tasks =  () => {
     }
      
     return (
-    <div className="flex mt-8">
-        <FormTask />
-        {tasks.isSuccess ?  <CardsTasks tasks={tasks.data} handleDelete={()=>handleDelete} /> : <p>Cargando</p>}
-        
-    </div>
+        <>
+            <div className="flex justify-end-safe mr-16 mt-8 mb-2 ">
+                <FormTask />
+            </div>
+            <div className="grid px-10 space-x-8 space-y-5 grid-cols-3 bg-white">
+                {tasks.isSuccess ?  <CardsTasks tasks={tasks.data} handleDelete={()=>handleDelete} /> : <p>Cargando</p>}
+            </div>
+        </> 
     )
 }
 export default Tasks;

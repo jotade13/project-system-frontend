@@ -22,13 +22,13 @@ interface TableProps {
 }
 
 
-const TableComp = ({caption,head,data,deleteItem,edit}:TableProps) => {
+const TableComp = ({caption,head,data,deleteItem}:TableProps) => {
     return (
         <Table>
             <TableCaption>{caption}</TableCaption>
             <TableHeader>
                 <TableRow>
-                <TableHeads head={head}/>
+                <TableHeads head={head} cell/>
                 </TableRow>
             </TableHeader>
             <TableBody>

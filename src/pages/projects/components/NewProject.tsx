@@ -5,7 +5,7 @@ const NewProject = () => {
     const {form,onSubmit} = useNewProject()
     
     return (
-        <ModalProject  onSubmit={onSubmit} buttonTitle="Crear Proyecto" title="Nuevo proyecto" form={form}/>
+        <ModalProject onSubmit={onSubmit} buttonTitle="Crear Proyecto" title="Nuevo proyecto" form={form}/>
     )
 }
 export default NewProject
