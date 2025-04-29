@@ -37,10 +37,12 @@ export async function login(dataLogin:dataLogin) {
 
     const data = await response.json();
     const token = data.token;
+    const role = data.role;
     localStorage.setItem('token',token)
+    localStorage.setItem('role',role)
 }
 
-export async function register(dataRegister:dataRegister) {
+export async function createUser(dataRegister:dataRegister) {
 
     const response = await fetch(url+"register",{
     method: 'POST',
@@ -56,5 +58,7 @@ export async function register(dataRegister:dataRegister) {
     }
     const data = await response.json();
     const token = data.token;
+    const role = data.role;
     localStorage.setItem('token',token)
+    localStorage.setItem('role',role)
 }

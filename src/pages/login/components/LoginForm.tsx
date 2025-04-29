@@ -2,18 +2,18 @@
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { login } from "./utils/http"
-import { Form} from "../../components/ui/form"
-import { Button } from "../../components/ui/button"
-import { TabsContent } from "../../components/ui/Tabs"
+import { login } from "../utils/http"
+import { Form} from "../../../components/ui/form"
+import { Button } from "../../../components/ui/button"
+import { TabsContent } from "../../../components/ui/Tabs"
 import { useNavigate } from "react-router"
 import { useMutation } from "@tanstack/react-query"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card"
-import { formSchemaLogin, formSchemaLoginType } from "./utils/validations"
-import errorAlert from "../../components/alerts/errorAlert"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../components/ui/card"
+import { formSchemaLogin, formSchemaLoginType } from "../utils/validations"
+import errorAlert from "../../../components/alerts/errorAlert"
 import { useTranslation } from "react-i18next"
-import FormFields from "../../components/form/FormFields"
-import  useFormLogin  from "./Hooks/useFormLogin"
+import FormFields from "../../../components/form/FormFields"
+import  useFormLogin  from "../Hooks/useFormLogin"
 
 const LoginForm = () => {
     const { t } = useTranslation();

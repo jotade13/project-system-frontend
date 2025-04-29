@@ -1,3 +1,4 @@
+import { userRole } from "../../../util/auth";
 import useFetchDeleteTask from "../hooks/useFetchDeleteTask";
 import useFetchTasks from "../hooks/useFetchTasks";
 import CardsTasks from "./CardsTasks";
@@ -15,9 +16,9 @@ const Tasks =  () => {
     return (
         <>
             <div className="flex justify-end-safe mr-16 mt-8 mb-2 ">
-                <FormTask />
+                { (userRole() === 'ADMIN' || userRole() === 'SUPERVISOR') &&<FormTask />}
             </div>
-            <div className="grid px-10 space-x-8 space-y-5 grid-cols-3 bg-white">
+            <div className="grid px-10 space-x-8 space-y-5 grid-cols-3">
                 {tasks.isSuccess ?  <CardsTasks tasks={tasks.data} handleDelete={()=>handleDelete} /> : <p>Cargando</p>}
             </div>
         </> 

@@ -1,13 +1,13 @@
 "use client"
-
+/*
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { TabsContent } from "../../components/ui/Tabs";
+import { TabsContent } from "../../../components/ui/Tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
+import { Button } from "../../../components/ui/button";
 import { useMutation } from "@tanstack/react-query"
-import { register } from "./utils/http";
+import { register } from "../utils/http";
 import { useNavigate } from "react-router";
 import { formSchemaRegister } from "./utils/validations";
 import { Form} from "../../components/ui/form";
@@ -68,4 +68,4 @@ const RegisterForm = () => {
         </TabsContent>
     )
 }
-export default RegisterForm;
+export default RegisterForm;*/

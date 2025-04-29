@@ -10,6 +10,7 @@ import FormSelect from "../../../components/form/FormSelect";
 import { DialogClose, DialogFooter } from "../../../components/ui/dialog";
 import { Button } from "../../../components/ui/button";
 import useUpdateTask from "../hooks/useUpdateTask";
+import { userRole } from "../../../util/auth";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const EditTask = ({task}:any) => {
     const form = useForm({
@@ -40,12 +41,12 @@ const EditTask = ({task}:any) => {
         <FormProvider {...form}>
             <Modal buttonTitle="Editar Tarea" title="Editar Tarea">  
                     <form id="login" onSubmit={form.handleSubmit((dataTask)=>onSubmit(dataTask,task.id))} className="space-y-3">
-                        <FormInput name="title" label="Titulo" placeholder="Titulo" type="text" control={form.control} />
-                        <FormInput name="description" label="Descripción" placeholder="Descripción" type="text" control={form.control}  />
-                        <FormSelect name="project_id" selectItems={projects} placeholder="Selecccione un proyecto" label="Proyecto" control={form.control}  />
-                        <FormSelect name="assigned_to_id" selectItems={users} placeholder="Selecccione el Usuario" label="Usuario" control={form.control} />
+                        <FormInput name="title" label="Titulo" placeholder="Titulo" type="text" control={form.control} disabled={userRole()==='USER'} />
+                        <FormInput name="description" label="Descripción" placeholder="Descripción" type="text" control={form.control} disabled={userRole()==='USER'}  />
+                        <FormSelect name="project_id" selectItems={projects} placeholder="Selecccione un proyecto" label="Proyecto" control={form.control} disabled={userRole()==='USER'}  />
+                        <FormSelect name="assigned_to_id" selectItems={users} placeholder="Selecccione el Usuario" label="Usuario" control={form.control} disabled={userRole()==='USER'} />
                         <FormSelect name="status" placeholder="Selecccione un estado" selectItems={selectStatus} label="Estado" control={form.control} />
-                        <FormSelect name="priority" placeholder="Selecccione una prioridad" selectItems={selectPriority} label="Prioridad" control={form.control} />
+                        <FormSelect name="priority" placeholder="Selecccione una prioridad" selectItems={selectPriority} label="Prioridad" control={form.control} disabled={userRole()==='USER'} />
                         <DialogFooter>
                             <DialogClose asChild>
                                 <Button type="submit">Editar Tarea</Button>
