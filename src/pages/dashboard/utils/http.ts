@@ -1,5 +1,8 @@
 import { getAuthToken } from "../../../util/auth";
+import { dataUser } from "./interfaces";
 const url = "http://127.0.0.1:8000/api/"
+
+
 
 export async function getTasksMetrics()  {
     const token = getAuthToken()
@@ -69,4 +72,25 @@ export async function getUsersMetrics()  {
         console.error("Error in getUsersMetrics:", error);
         throw error; 
     } 
+}
+
+export async function createUser(dataUser:dataUser) {
+
+    const response = await fetch(url+"register",{
+    method: 'POST',
+    body: JSON.stringify(dataUser.data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    });
+
+    if (!response.ok) {
+        const error = new Error('An error occurred while logging in this page');
+        throw error;
+    }
+    const data = await response.json();
+    const token = data.token;
+    const role = data.role;
+    localStorage.setItem('token',token)
+    localStorage.setItem('role',role)
 }

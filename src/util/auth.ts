@@ -19,3 +19,8 @@ export const checkUnauthLoader = () => {
     }
     return null
 }
+
+export const userRole = () => {
+    const role = localStorage.getItem('role')
+    return role
+}

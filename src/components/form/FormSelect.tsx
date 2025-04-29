@@ -10,6 +10,7 @@ export interface FormSelectProps <T extends FieldValues> {
     type?: React.HTMLInputTypeAttribute;
     control?: Control<T>
     selectItems: SelectItemProps[]
+    disabled?: boolean
 }
 
 export interface SelectItemProps{
@@ -17,7 +18,7 @@ export interface SelectItemProps{
     valueTitle: string
 }
 
-const FormSelect = <T extends FieldValues>({name,label,placeholder,control,selectItems}:FormSelectProps<T>) =>{
+const FormSelect = <T extends FieldValues>({name,label,placeholder,control,selectItems,disabled}:FormSelectProps<T>) =>{
     return (
         <FormField
           control={control}
@@ -25,7 +26,7 @@ const FormSelect = <T extends FieldValues>({name,label,placeholder,control,selec
           render={({ field }) => (
             <FormItem>
               <FormLabel>{label}</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} defaultValue={field.value} disabled={disabled}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder={placeholder} />

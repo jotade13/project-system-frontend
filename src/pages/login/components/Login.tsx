@@ -2,9 +2,9 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
-} from "../../components/ui/Tabs"
-import RegisterForm from "../login/RegisterForm"
-import LoginForm from "../login/LoginForm"
+} from "../../../components/ui/Tabs"
+//import RegisterForm from "./RegisterForm"
+import LoginForm from "./LoginForm"
 import { useTranslation } from "react-i18next"
 
 const Login =  () => {
@@ -17,7 +17,6 @@ const Login =  () => {
                 <TabsTrigger value="register">{t('register.title')}</TabsTrigger>
             </TabsList>
             <LoginForm />
-            <RegisterForm/>
         </Tabs>
     )
 }

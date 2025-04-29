@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next"
 import { FormInputProps } from "../../../components/form/FormInput"
 import { formSchemaLoginType } from "../utils/validations"
 
-const useFormLogin = () : FormInputProps<formSchemaLoginType>[] => {
+const useFormLogin = ()  => {
     const {t} = useTranslation()
     
     const formLogin : FormInputProps<formSchemaLoginType>[] = [
