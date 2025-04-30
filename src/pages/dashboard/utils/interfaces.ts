@@ -14,3 +14,11 @@ export type dataUser = {
         password_confirmation:string  
     }
 }
+
+export interface User {
+    first_name:string,
+    last_name:string,
+    role:string,
+    id:string,
+    email:string
+}

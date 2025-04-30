@@ -4,18 +4,18 @@ import FormFields from "../../../components/form/FormFields"
 import { DialogFooter } from "../../../components/ui/dialog"
 import { Form } from "../../../components/ui/form"
 import useFormUser from "../hooks/useFormUser"
-import { formSchemaCreateUserType } from "../utils/validations"
+import { formSchemaUserType } from "../utils/validations"
 import { UseFormReturn } from "react-hook-form"
 import { Button } from "../../../components/ui/button"
 import FormSelect from "../../../components/form/FormSelect"
 
 interface PropsModalUsuario
 {
-    project?:formSchemaCreateUserType,
+    project?:formSchemaUserType,
     buttonTitle: string,
     title:string,
-    onSubmit:(dataUser:formSchemaCreateUserType,id:string) => void,
-    form: UseFormReturn<formSchemaCreateUserType>,
+    onSubmit:(dataUser:formSchemaUserType,id:string) => void,
+    form: UseFormReturn<formSchemaUserType>,
     id?: string
 }
 

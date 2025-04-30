@@ -2,6 +2,7 @@ import { userRole } from '../../../util/auth';
 import useFetchMetrics from '../hooks/useFetchMetrics'
 import ASideDashboard from './ASideDashboard';
 import CardsDashboard from './CardsDashboard';
+import TableUsers from './TableUser/TableUsers';
 const Dashboard =  () => {
     const {metricsData,metricsIsLoading} = useFetchMetrics()
    
@@ -15,6 +16,7 @@ const Dashboard =  () => {
             <div className='flex space-x-10 max-w-full justify-center mt-20 mx-auto'>
                 {metricsIsLoading ? <CardsDashboard content={metricsData} /> : <p>Cargando</p>}
             </div>
+            <TableUsers />
         </div>
         </div>
         </>

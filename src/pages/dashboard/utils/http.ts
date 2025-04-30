@@ -76,6 +76,7 @@ export async function getUsersMetrics()  {
 
 export async function createUser(dataUser:dataUser) {
 
+    try {
     const response = await fetch(url+"register",{
     method: 'POST',
     body: JSON.stringify(dataUser.data),
@@ -93,4 +94,59 @@ export async function createUser(dataUser:dataUser) {
     const role = data.role;
     localStorage.setItem('token',token)
     localStorage.setItem('role',role)
+    }
+    catch (error) {
+        console.error("Error in getUsersMetrics:", error);
+        throw error; 
+    } 
+}
+
+export async function updateUser(dataUser:dataUser,id:string) {
+    
+    try{
+    const response = await fetch(url+"user/"+id,{
+    method: 'PUT',
+    body: JSON.stringify(dataUser.data),
+    headers: {
+      'Content-Type': 'application/json',
+
+    }
+    });
+
+    if (!response.ok) {
+        const error = new Error('An error occurred');
+        throw error;
+    }
+    const data = await response.json();
+    return data;
+    }
+    catch (error) {
+        console.error("Error in getUsersMetrics:", error);
+        throw error; 
+    } 
+}
+export async function deleteUser(id:string) {
+    try{
+    const token = getAuthToken()
+
+    const response = await fetch(url+"user/"+id,{
+    method: 'DELETE',
+    body: JSON.stringify(id),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    });
+
+    if (!response.ok) {
+        const error = new Error('An error occurred');
+        throw error;
+    }
+    const data = await response.json();
+    return data;
+    }
+    catch (error) {
+        console.error("Error in getUsersMetrics:", error);
+        throw error; 
+    } 
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { formSchemaCreateUser } from "../utils/validations.ts"
+import { formSchemaUser } from "../utils/validations.ts"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -15,8 +15,8 @@ const UseNewUser = () => {
     const Navigate = useNavigate()
 
 
-    const form = useForm<z.infer<typeof formSchemaCreateUser>>({
-        resolver: zodResolver(formSchemaCreateUser),
+    const form = useForm<z.infer<typeof formSchemaUser>>({
+        resolver: zodResolver(formSchemaUser),
         defaultValues: {
           first_name: "",
           last_name:"",
@@ -36,7 +36,7 @@ const UseNewUser = () => {
         }
     })
 
-    const onSubmit = (data: z.infer<typeof formSchemaCreateUser>) => {
+    const onSubmit = (data: z.infer<typeof formSchemaUser>) => {
         mutate({data})
     }
 

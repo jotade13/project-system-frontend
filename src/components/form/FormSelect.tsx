@@ -11,6 +11,7 @@ export interface FormSelectProps <T extends FieldValues> {
     control?: Control<T>
     selectItems: SelectItemProps[]
     disabled?: boolean
+    id?: string
 }
 
 export interface SelectItemProps{
@@ -18,7 +19,7 @@ export interface SelectItemProps{
     valueTitle: string
 }
 
-const FormSelect = <T extends FieldValues>({name,label,placeholder,control,selectItems,disabled}:FormSelectProps<T>) =>{
+const FormSelect = <T extends FieldValues>({name,label,placeholder,control,selectItems,disabled,id}:FormSelectProps<T>) =>{
     return (
         <FormField
           control={control}
@@ -29,7 +30,7 @@ const FormSelect = <T extends FieldValues>({name,label,placeholder,control,selec
               <Select onValueChange={field.onChange} defaultValue={field.value} disabled={disabled}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder={placeholder} />
+                    <SelectValue id={id} placeholder={placeholder} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
