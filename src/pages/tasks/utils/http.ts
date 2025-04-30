@@ -71,7 +71,8 @@ export async function getTasks()  {
         throw error; 
     } 
 }
-export async function getUsers(token:string|null)  {
+export async function getUsers()  {
+    const token = getAuthToken()
 
     try {
         const response = await fetch(url + "users",{
