@@ -1,5 +1,5 @@
 import { getAuthToken } from "../../../util/auth";
-import { dataUser } from "./interfaces";
+import { dataUser, UpdateUserProps } from "./interfaces";
 const url = "http://127.0.0.1:8000/api/"
 
 
@@ -77,23 +77,22 @@ export async function getUsersMetrics()  {
 export async function createUser(dataUser:dataUser) {
 
     try {
-    const response = await fetch(url+"register",{
-    method: 'POST',
-    body: JSON.stringify(dataUser.data),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-    });
+        const token = getAuthToken()
+        const response = await fetch(url+"register",{
+        method: 'POST',
+        body: JSON.stringify(dataUser.data),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+        });
 
-    if (!response.ok) {
-        const error = new Error('An error occurred while logging in this page');
-        throw error;
-    }
-    const data = await response.json();
-    const token = data.token;
-    const role = data.role;
-    localStorage.setItem('token',token)
-    localStorage.setItem('role',role)
+        if (!response.ok) {
+            const error = new Error('An error occurred while logging in this page');
+            throw error;
+        }
+        const data = await response.json();
+        return data;
     }
     catch (error) {
         console.error("Error in getUsersMetrics:", error);
@@ -101,52 +100,51 @@ export async function createUser(dataUser:dataUser) {
     } 
 }
 
-export async function updateUser(dataUser:dataUser,id:string) {
-    
+export async function updateUser({dataUser,id}:UpdateUserProps) {
     try{
-    const response = await fetch(url+"user/"+id,{
-    method: 'PUT',
-    body: JSON.stringify(dataUser.data),
-    headers: {
-      'Content-Type': 'application/json',
-
-    }
-    });
-
-    if (!response.ok) {
-        const error = new Error('An error occurred');
-        throw error;
-    }
-    const data = await response.json();
-    return data;
+        console.log(dataUser)
+        const token = getAuthToken()
+        const response = await fetch(url+"users/"+id,{
+        method: 'PUT',
+        body: JSON.stringify(dataUser),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+        });
+        if (!response.ok) {
+            const error = new Error('An error occurred');
+            throw error;
+        }
+        const data = await response.json();
+        return data;
     }
     catch (error) {
-        console.error("Error in getUsersMetrics:", error);
+        console.error("Error in UpdateUser:", error);
         throw error; 
     } 
 }
 export async function deleteUser(id:string) {
     try{
-    const token = getAuthToken()
+        const token = getAuthToken()
 
-    const response = await fetch(url+"user/"+id,{
-    method: 'DELETE',
-    body: JSON.stringify(id),
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    }
-    });
+        const response = await fetch(url+"users/"+id,{
+        method: 'DELETE',
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+        }
+        });
 
-    if (!response.ok) {
-        const error = new Error('An error occurred');
-        throw error;
-    }
-    const data = await response.json();
-    return data;
+        if (!response.ok) {
+            const error = new Error('An error occurred');
+            throw error;
+        }
+        const data = await response.json();
+        return data;
     }
     catch (error) {
-        console.error("Error in getUsersMetrics:", error);
+        console.error("Error in deletUser:", error);
         throw error; 
     } 
 }
