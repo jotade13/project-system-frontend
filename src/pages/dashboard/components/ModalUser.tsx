@@ -11,7 +11,6 @@ import FormSelect from "../../../components/form/FormSelect"
 
 interface PropsModalUsuario
 {
-    project?:formSchemaUserType,
     buttonTitle: string,
     title:string,
     onSubmit:(dataUser:formSchemaUserType,id:string) => void,

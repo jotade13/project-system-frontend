@@ -1,3 +1,5 @@
+import { formSchemaUserType } from "./validations"
+
 export interface project {
     name:string,
     description:string,
@@ -21,4 +23,13 @@ export interface User {
     role:string,
     id:string,
     email:string
+}
+
+export interface UpdateUserProps {
+    dataUser: formSchemaUserType,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    id:any
+}
+export interface EditUserProps{
+    user: User
 }

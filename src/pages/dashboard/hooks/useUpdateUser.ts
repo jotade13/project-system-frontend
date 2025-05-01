@@ -1,16 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { formSchemaUser, formSchemaUserType } from "../utils/validations";
+import { formSchemaEditUser, formSchemaUser, formSchemaUserType } from "../utils/validations";
 import { updateUser } from "../utils/http";
-import { User } from "../utils/interfaces";
 
 
 
-const useUpdateUser = (user:User) => {
+const useUpdateUser = (user:formSchemaEditUserType) => {
+    console.log(user)
     
     const form = useForm({
-            resolver: zodResolver(formSchemaUser),
+            resolver: zodResolver(formSchemaEditUser),
             defaultValues: user
     })
     const queryClient = useQueryClient();

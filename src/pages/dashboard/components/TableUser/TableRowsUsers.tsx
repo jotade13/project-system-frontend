@@ -24,7 +24,7 @@ const TableRowsUsers = ({users,deleteUser,deleteItem,edit}:Rows) => {
                 { (deleteUser|| edit) &&
                     <TableCell className="flex space-x-4 justify-center-safe">
                     {deleteItem && <Button variant="destructive" onClick={()=>deleteItem(user.id)}>Delete</Button>}
-                    {edit &&  <EditUser id={user.id} />
+                    {edit &&  <EditUser user={user} />
                     }
                      </TableCell>
                 }
