@@ -8,6 +8,7 @@ import { formSchemaUserType } from "../utils/validations"
 import { UseFormReturn } from "react-hook-form"
 import { Button } from "../../../components/ui/button"
 import FormSelect from "../../../components/form/FormSelect"
+import { useTranslation } from "react-i18next"
 
 interface PropsModalUsuario
 {
@@ -22,19 +23,20 @@ interface PropsModalUsuario
 const ModalUsuario = ({onSubmit,buttonTitle,title,form,id}:PropsModalUsuario) => {
 
     const {formUser,selectRole} = useFormUser()
-    
+    const { t } = useTranslation();
+
    
 
     return (
        
-            <Modal buttonTitle={buttonTitle} title={title}>
+            <Modal buttonTitle={t(buttonTitle)} title={title}>
                 <Form {...form} >
                 <form onSubmit={form.handleSubmit((dataUser)=>onSubmit(dataUser,id))} className="space-y-8">
                     <FormFields inputForms={formUser} control={form.control} />
-                    <FormSelect name="role" control={form.control} selectItems={selectRole} label="Rol" placeholder="Selecciona un rol"/>
+                    <FormSelect name="role" control={form.control} selectItems={selectRole} label={t('role')} placeholder={t('select_role')}/>
                     <DialogFooter>
                         <DialogClose asChild>
-                            <Button type="submit">{buttonTitle}</Button>
+                            <Button type="submit">{t(buttonTitle)}</Button>
                         </DialogClose>
                     </DialogFooter>
                 </form>

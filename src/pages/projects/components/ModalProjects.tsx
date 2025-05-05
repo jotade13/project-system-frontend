@@ -10,6 +10,7 @@ import {  formSchemaProjectType } from "../utils/validations"
 import SelectUser from "./selectUser"
 import FormMultSelect from "../../../components/form/FormMultSelect"
 import useUsersSelect from "../hooks/useUsersSelect"
+import { useTranslation } from "react-i18next"
 
 
 interface PropsModalProject
@@ -23,7 +24,7 @@ interface PropsModalProject
 }
 
 const ModalProject = ({onSubmit,buttonTitle,title,id,form}:PropsModalProject) => {
-
+    const {t} = useTranslation()
     const {selectStatus} = useFormSelects()
     const {users} = useUsersSelect()
 
@@ -31,10 +32,10 @@ const ModalProject = ({onSubmit,buttonTitle,title,id,form}:PropsModalProject) =>
         <Modal buttonTitle={buttonTitle} title={title}>
             <Form {...form} >
                 <form id="projects" onSubmit={form.handleSubmit((dataProject)=>onSubmit(dataProject,id))} className="space-y-3">
-                    <FormInput name="name" label="Titulo" placeholder="Titulo" type="text" control={form.control} />
-                    <FormInput name="description" label="Descripción" placeholder="Descripción" type="text" control={form.control} />
-                    <FormSelect name="status" selectItems={selectStatus} placeholder="Selecccione un proyecto" label="Proyecto" control={form.control} />
-                    <FormMultSelect name="assigned_users" placeholder="Seleccionar Usuarios" label="Agregar Usuarios" control={form.control} selectItems={users} />
+                    <FormInput name="name" label={t('label.name')} placeholder={t('placeholder.name')} type="text" control={form.control} />
+                    <FormInput name="description" label={t('label.description')} placeholder={t('placeholder.description')} type="text" control={form.control} />
+                    <FormSelect name="status" label={t('label.status')} placeholder={t('placeholder.status')} selectItems={selectStatus} control={form.control} />
+                    <FormMultSelect name="assigned_users" label={t('label.add_users')} placeholder={t('placeholder.add_users')} control={form.control} selectItems={users} />
                     <DialogFooter>
                         <DialogClose asChild>
                             <Button type="submit">{buttonTitle}</Button>

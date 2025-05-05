@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import { Button } from "../../../../components/ui/button"
 import {TableCell, TableRow} from "../../../../components/ui/table"
 import { userRole } from "../../../../util/auth"
@@ -8,12 +9,11 @@ import EditUser from "../EditUser"
 export interface Rows {
     users: User[]
     deleteItem: (id:string) => void,
-    edit: boolean
-    deleteUser:boolean
 }
 
-const TableRowsUsers = ({users,deleteUser,deleteItem,edit}:Rows) => {
+const TableRowsUsers = ({users,deleteItem}:Rows) => {
     console.log(users)
+    const {t} = useTranslation()
     return (
         <>
             {users.map((user) => 
@@ -24,7 +24,7 @@ const TableRowsUsers = ({users,deleteUser,deleteItem,edit}:Rows) => {
                 <TableCell>{user.role}</TableCell>
                 { (userRole() === 'ADMIN') && 
                     <TableCell className="flex space-x-4 justify-center-safe">
-                    <Button variant="destructive" onClick={()=>deleteItem(user.id)}>Delete</Button> 
+                    <Button variant="destructive" onClick={()=>deleteItem(user.id)}>{t('delete')}</Button> 
                     <EditUser user={user} />
                     </TableCell>
                 }

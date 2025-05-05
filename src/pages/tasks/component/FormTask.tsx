@@ -11,8 +11,10 @@ import useFetchNewTask from "../hooks/useFetchNewTask"
 import { Button } from "../../../components/ui/button"
 import { DialogClose, DialogFooter } from "../../../components/ui/dialog"
 import useFormSelects from "../hooks/useFormSelects"
+import { useTranslation } from "react-i18next"
 
 const FormTask = () => {
+    const {t} = useTranslation();
     
     const form = useForm({
         resolver: zodResolver(formSchemaTask),
@@ -33,15 +35,15 @@ const FormTask = () => {
     
     return (
         
-        <Modal buttonTitle="Crear Tarea" title="Nueva Tarea">
+        <Modal buttonTitle={t('create_task')} title={t('new_task')}>
             <Form {...form} >
                 <form id="login" onSubmit={form.handleSubmit(onSubmit)} className="space-y-3    ">
-                    <FormInput name="title" label="Titulo" placeholder="Titulo" type="text" control={form.control} />
-                    <FormInput name="description" label="Descripción" placeholder="Descripción" type="text" control={form.control} />
-                    <FormSelect name="project_id" selectItems={projects} placeholder="Selecccione un proyecto" label="Proyecto" control={form.control} />
-                    <FormSelect name="assigned_to_id" selectItems={users} placeholder="Selecccione el Usuario" label="Usuario" control={form.control} />
-                    <FormSelect name="status" placeholder="Selecccione un estado" selectItems={selectStatus} label="Estado" control={form.control} />
-                    <FormSelect name="priority" placeholder="Selecccione una prioridad" selectItems={selectPriority} label="Prioridad" control={form.control} />
+                    <FormInput name="title" label={t('label.title')} placeholder={t('placeholder.title')} type="text" control={form.control} />
+                    <FormInput name="description" label={t('label.description')} placeholder={t('placeholder.description')} type="text" control={form.control} />
+                    <FormSelect name="project_id" label={t('label.project')} placeholder={t('placeholder.project')}  selectItems={projects} control={form.control} />
+                    <FormSelect name="assigned_to_id" label={t('label.user')} placeholder={t('placeholder.user')} selectItems={users} control={form.control} />
+                    <FormSelect name="status" label={t('label.status')} placeholder={t('placeholder.status')} selectItems={selectStatus}  control={form.control} />
+                    <FormSelect name="priority" label={t('label.priority')} placeholder={t('placeholder.priority')} selectItems={selectPriority}  control={form.control} />
                     <DialogFooter>
                         <DialogClose asChild>
                             <Button type="submit">Crear Tarea</Button>

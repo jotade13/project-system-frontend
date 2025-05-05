@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUsersMetrics } from "../utils/http";
 
-const useFetchUserMetrics = () => {
+const useFetchUserMetrics = (title:string) => {
     const { data, isLoading, error } = useQuery({
         queryKey: ['usersMetrics'],
         queryFn: () => getUsersMetrics()
     });
 
     const metricsData = data ? {
-        title: "Total de Usuarios",
+        title: title,
         content: data.total_users
     }: {}
 

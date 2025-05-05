@@ -16,6 +16,7 @@ const router = createBrowserRouter([
             {
                 path: "/tasks",
                 Component: Tasks,
+                
             },
             {
                 path: "/projects",

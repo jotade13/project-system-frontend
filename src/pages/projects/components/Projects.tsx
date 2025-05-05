@@ -1,24 +1,24 @@
-import Table from "../../../components/Table";
+import { I18nextProvider } from "react-i18next";
 import { userRole } from "../../../util/auth";
-import useDeleteProject from "../hooks/useDeleteProject";
-import useFetchProjects from "../hooks/useFetchProjects";
-import useTable from "../hooks/useTable";
 import NewProject from "./NewProject";
+import TableProjects from "./TableProjects";
+import i18next from "../utils/i18n";
+
+export const i18n = i18next;
+
 
 const Projects =  () => {
-    const {tableHeads} = useTable()
-    const {projects,isLoading} = useFetchProjects()
-    const {deleteProjectId} = useDeleteProject()
+   
     
     return (
-        <>
+        <I18nextProvider i18n={i18n} >
             <div className="flex justify-end-safe mr-48 mt-8 ">
                 { (userRole() === 'ADMIN' || userRole() === 'SUPERVISOR') && <NewProject />}
             </div>
             <div className= "px-40">
-                {!isLoading ? <Table caption="Projects" head={tableHeads} data={projects} deleteItem={deleteProjectId.mutate} edit />: <p>Cargando</p>}
+                <TableProjects />
             </div>
-        </>
+        </I18nextProvider>
     )
 }
 export default Projects;

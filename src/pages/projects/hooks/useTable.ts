@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next"
 
 const useTable = (): {tableHeads:string[]} => {
-    const tableHeads = ['Nombre','Descripcion','Dueño']
+    const {t} = useTranslation()
+    const tableHeads = [t('name'),t('description'),t('owner')]
     
     return {tableHeads}
 }
