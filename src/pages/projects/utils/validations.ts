@@ -8,4 +8,5 @@ export const formSchemaProject = z.object({
     name: z.string().min(2,{ message: "Titulo invalido tiene que tener mas caracteres" }),
     description: z.string().min(2,{ message: "Descripción invalida tiene que tener mas caracteres"}),
     status: z.string(),
+    assigned_users:  z.any().array()
 })

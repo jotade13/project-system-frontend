@@ -13,7 +13,7 @@ interface PropsModalUsuario
 {
     buttonTitle: string,
     title:string,
-    onSubmit:(dataUser:formSchemaUserType,id:string) => void,
+    onSubmit:(dataUser:formSchemaUserType,id:string|undefined) => void,
     form: UseFormReturn<formSchemaUserType>,
     id?: string
 }

@@ -35,6 +35,7 @@ export async function getProjects(token:string|null)  {
 }
 export async function newProject(dataNewProject:dataNewProject) {
     const token = getAuthToken()
+    console.log(dataNewProject)
 
     try{
         const response = await fetch(url+"projects",{
