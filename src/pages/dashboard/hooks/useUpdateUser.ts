@@ -17,7 +17,8 @@ const useUpdateUser = (user:formSchemaEditUserType) => {
     const {mutate} = useMutation({
         mutationFn: updateUser,
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ['User']})
+            queryClient.invalidateQueries({queryKey: ['users']})
+            form.reset()
         }
     })
     const onSubmit = (dataUser:formSchemaUserType,id:string) => {

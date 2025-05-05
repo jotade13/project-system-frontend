@@ -8,7 +8,7 @@ const EditUser = ({user}:EditUserProps) => {
      
 
     return (
-        <ModalUsuario form={form} onSubmit={()=>onSubmitUpdate(user,user.id)} buttonTitle="Editar" title="Editar Usuario" id={user.id} />
+        <ModalUsuario form={form} onSubmit={onSubmitUpdate} buttonTitle="Editar" title="Editar Usuario" id={user.id} />
 
     )
 }

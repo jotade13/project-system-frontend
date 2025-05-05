@@ -10,8 +10,6 @@ import { Toaster } from "@/components/ui/sonner"
 
 import './i18n';
 
-
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
