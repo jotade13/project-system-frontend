@@ -1,14 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProjectMetrics } from "../utils/http";
+import { useTranslation } from "react-i18next";
 
-const useFetchProjectMetrics = () => {
+const useFetchProjectMetrics = (title:string) => {
+    const {t} = useTranslation()
+    
     const { data, isLoading, error } = useQuery({
         queryKey: ['projectsMetrietrics'],
         queryFn: () => getProjectMetrics()
     });
 
     const metricsData = data ? {
-        title: "Total Proyectos",
+        title: title,
         content: data.data
     }: {}
 

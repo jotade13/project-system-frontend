@@ -46,5 +46,14 @@
             "button": "Crear Task",
             "title": "New Task"
         } 
-    }
+    },
+    "loading": "Loading",
+    "dashboard":
+    {
+        "title": "Dashboard",
+        "create_user": "Create user"
+    },
+    "edit": "Edit",
+    "delete": "Delete",
+    "select_role": "",
 }

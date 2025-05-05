@@ -14,9 +14,9 @@ const useFormUser = () => {
         {name:"password_confirmation",label:t('register.label.password_confirmation'), placeholder:t('register.placeholder.password_confirmation'),type:"password"}
     ]
     const selectRole : SelectItemProps[] = [
-            {value: "ADMIN", valueTitle: "Administrador"},
-            {value: "USER", valueTitle: "Usuario"},
-            {value: "SUPERVISOR", valueTitle: "Supervisor"},
+            {value: "ADMIN", valueTitle: t('admin')},
+            {value: "USER", valueTitle: t('user')},
+            {value: "SUPERVISOR", valueTitle: t('supervisor')},
         ]
 
     return {formUser,selectRole}

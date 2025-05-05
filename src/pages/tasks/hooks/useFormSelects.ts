@@ -1,19 +1,20 @@
 //import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 import { SelectItemProps } from "../../../components/form/FormSelect"
 
 const useFormSelects = () : {selectStatus: SelectItemProps[], selectPriority :SelectItemProps[] } => {
-   // const {t} = useTranslation()
+   const {t} = useTranslation()
     
    
     const selectStatus : SelectItemProps[] = [
-        {value: "PENDING", valueTitle: "Pendiente"},
-        {value: "IN_PROGRESS", valueTitle: "En progreso"},
-        {value: "Completados", valueTitle: "Completada"},
+        {value: "PENDING", valueTitle: t('pending')},
+        {value: "IN_PROGRESS", valueTitle: t('in_progress')},
+        {value: "COMPLETED", valueTitle: t('Completed')},
     ]
     const selectPriority : SelectItemProps[] = [
-        {value: "LOW", valueTitle: "baja"},
-        {value: "MEDIUM", valueTitle: "media"},
-        {value: "HIGH", valueTitle: "alta"},
+        {value: "LOW", valueTitle: t('low')},
+        {value: "MEDIUM", valueTitle: t('medium')},
+        {value: "HIGH", valueTitle: t('high')},
     ]
 
     return {selectStatus,selectPriority}

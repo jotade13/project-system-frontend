@@ -54,5 +54,14 @@
             "button": "Crear Tarea",
             "title": "Nueva Tarea"
         } 
-    }
+    },
+    "loading": "Cargando",
+    "dashboard":
+    {
+        "title": "Panel",
+        "create_user": "Crear Usuario"
+
+    },
+    "edit": "Editar",
+    "delete": "Eliminar"
 }

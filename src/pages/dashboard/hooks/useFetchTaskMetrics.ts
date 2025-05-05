@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTasksMetrics } from "../utils/http";
 
-const useFetchTaskMetrics = () => {
+const useFetchTaskMetrics = (title:string) => {
     const { data, isLoading, error } = useQuery({
         queryKey: ['TasksMetrics'],
         queryFn: () => getTasksMetrics()
     });
 
     const metricsData = data ? {
-        title: "Total tareas asignadas",
+        title: title,
         content: data.data
     }: {}
 

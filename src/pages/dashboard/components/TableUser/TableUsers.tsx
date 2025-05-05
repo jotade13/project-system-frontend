@@ -3,9 +3,11 @@ import { Table, TableBody, TableCaption, TableHeader, TableRow } from "../../../
 import TableHeads from "../../../../components/TableHeads"
 import TableRowsUsers from "./TableRowsUsers"
 import useDeleteUser from "../../hooks/useDeleteUser"
+import { useTranslation } from "react-i18next"
 
 const TableUsers = () => {
-    const HeadUsers = ['Nombre','Apellido','Correo','Role']
+    const {t} = useTranslation()
+    const HeadUsers = [t('first_name'),t('last_name'),t('email'),t('role')]
     const {data,isLoading,isError} = useFetchUsers()
     const {deleteUserId}  = useDeleteUser()
 
