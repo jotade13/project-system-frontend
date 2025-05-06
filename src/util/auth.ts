@@ -24,3 +24,7 @@ export const userRole = () => {
     const role = localStorage.getItem('role')
     return role
 }
+export const getId = () => {
+    const id = localStorage.getItem('id')
+    return id
+}

@@ -1,7 +1,7 @@
 import { createInstance } from 'i18next';
 
 const i18n = createInstance({
-  lng: 'en',
+  lng: 'es',
   fallbackLng: 'es',
 
   interpolation: {
@@ -34,8 +34,8 @@ const i18n = createInstance({
                 completed: "Completed",
                 low: "Low",
                 medium: "Medium",
-                high: "High"
-            }
+                high: "High",
+            },
         },
         es: {
         translation: {
@@ -64,6 +64,8 @@ const i18n = createInstance({
                 medium: "Media",
                 high: "Alta"
             },
+            projects : "Proyectos",
+            users: "Usuarios"
         },
     },
 });

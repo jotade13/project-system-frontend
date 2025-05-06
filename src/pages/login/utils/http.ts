@@ -38,8 +38,10 @@ export async function login(dataLogin:dataLogin) {
     const data = await response.json();
     const token = data.token;
     const role = data.role;
+    const id = data.id;
     localStorage.setItem('token',token)
     localStorage.setItem('role',role)
+    localStorage.setItem('id',id)
 }
 
 export async function createUser(dataRegister:dataRegister) {

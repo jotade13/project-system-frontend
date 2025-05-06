@@ -1,9 +1,8 @@
 import { createInstance } from 'i18next';
 
 const i18n = createInstance({
-  lng: 'en',
+  lng: 'es',
   fallbackLng: 'es',
-  debug: true,
 
   interpolation: {
     escapeValue: false, // not needed for react as it escapes by default
@@ -12,7 +11,7 @@ const i18n = createInstance({
   resources: {
     en: {
       translation: {
-        title: "Panel",
+        title: "Dashboard",
         create_user: "Create User",
         new_user: "New User",
         register:
@@ -45,7 +44,8 @@ const i18n = createInstance({
         select_role: "Select Role",
         admin: "Admin",
         user: "User",
-        supervisor: "Supervisor"
+        supervisor: "Supervisor",
+        users: "Users"
       }
 
     },
@@ -85,7 +85,8 @@ const i18n = createInstance({
         select_role: "Seleccionar Rol",
         admin: "Administrador",
         user: "Usuario",
-        supervisor: "Supervisor"
+        supervisor: "Supervisor",
+        users: "Usuarios"
       },
     },
   },

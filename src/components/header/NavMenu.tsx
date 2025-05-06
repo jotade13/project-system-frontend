@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "../ui/navigation-menu";
+import { Link } from "react-router";
 
 const NavMenu = () => {
     const {t} = useTranslation();
@@ -7,13 +8,19 @@ const NavMenu = () => {
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuLink href="/dashboard">{t('header.dashboard')}</NavigationMenuLink>
+                    <Link to="/dashboard" className={location.pathname === "/dashboard" ? navigationMenuTriggerStyle() + ' active' : navigationMenuTriggerStyle()}>
+                        {t('header.dashboard')}
+                    </Link>   
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuLink href="/tasks">{t('header.tasks')}</NavigationMenuLink>
+                    <Link to="/tasks" className={location.pathname === "/tasks" ? navigationMenuTriggerStyle() + 'active' : navigationMenuTriggerStyle()}>
+                            {t('header.tasks')}
+                    </Link>   
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuLink href="/projects">{t('header.projects')}</NavigationMenuLink>
+                    <Link to="/projects" className={location.pathname === "/projects" ? navigationMenuTriggerStyle() + 'active' : navigationMenuTriggerStyle()}>
+                        {t('header.projects')}
+                    </Link>   
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
