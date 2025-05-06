@@ -16,7 +16,7 @@ const TableUsers = () => {
 
     return (
         <Table>
-            <TableCaption>{/*caption*/}Hola</TableCaption>
+            <TableCaption>{t('users')}</TableCaption>
             <TableHeader>
                 <TableRow>
                 <TableHeads head={HeadUsers} cell/>

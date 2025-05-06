@@ -27,7 +27,8 @@ const i18n = createInstance({
                 },
                 name: 'Name',
                 description: 'Description',
-                owner: 'Owner'
+                owner: 'Owner',
+                projects : "Projects"
             }
         },
         es: {
@@ -48,7 +49,8 @@ const i18n = createInstance({
                 },
                 name: 'Nombre',
                 description: 'Descripción',
-                owner: 'Owner'
+                owner: 'Dueño',
+                projects : "Proyectos"
             },
         },
     },
