@@ -35,6 +35,13 @@ const i18n = createInstance({
                 low: "Low",
                 medium: "Medium",
                 high: "High",
+                projects : "Proyectos",
+                users: "Usuarios",
+                error: {
+                    create_task: "Error creating task",
+                    update_task: "Error updating task",
+                    delete_task: "Error deleting task"
+                }
             },
         },
         es: {
@@ -65,7 +72,12 @@ const i18n = createInstance({
                 high: "Alta"
             },
             projects : "Proyectos",
-            users: "Usuarios"
+            users: "Usuarios",
+            error: {
+                create_task: "Error al crear la tarea",
+                update_task: "Error al actualizar la tarea",
+                delete_task: "Error al eliminar la tarea"
+            }
         },
     },
 });

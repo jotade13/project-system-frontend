@@ -29,6 +29,11 @@ const i18n = createInstance({
                 description: 'Description',
                 owner: 'Owner',
                 projects : "Projects"
+            },
+            error:{
+                create_project: "Error creating Project",
+                update_project: "Error updating project",
+                delete_project: "Error deleting project"
             }
         },
         es: {
@@ -52,6 +57,11 @@ const i18n = createInstance({
                 owner: 'Dueño',
                 projects : "Proyectos"
             },
+            error:{
+                create_project: "Error al crear el proyecto",
+                update_project: "Error al actualizar el proyecto",
+                delete_project: "Error al eliminar el proyecto"
+            }
         },
     },
 });

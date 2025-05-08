@@ -45,9 +45,13 @@ const i18n = createInstance({
         admin: "Admin",
         user: "User",
         supervisor: "Supervisor",
-        users: "Users"
+        users: "Users",
+        error:{
+          create_user: "Error creating user",
+          update_user: "Error updating user",
+          delete_user: "Error deleting user"
+        }
       }
-
     },
     es: {
       translation: {
@@ -86,7 +90,12 @@ const i18n = createInstance({
         admin: "Administrador",
         user: "Usuario",
         supervisor: "Supervisor",
-        users: "Usuarios"
+        users: "Usuarios",
+        error:{
+          create_user: "Error al crear el usuario",
+          update_user: "Error al actualizar el usuario",
+          delete_user: "Error al eliminar el usuario"
+        }
       },
     },
   },

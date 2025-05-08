@@ -4,9 +4,12 @@ import { formSchemaProject, formSchemaProjectType } from "../utils/validations";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { renameKey } from "../../../util/functions";
+import { useTranslation } from "react-i18next";
+import errorAlert from "../../../components/alerts/errorAlert";
 
 
 const useUpdateProject = ({project}:formSchemaProjectType) => {
+    const {t} = useTranslation()
 
     if (project.assigned_users) {
         project.assigned_users = project.assigned_users.map((user:any) => 
@@ -26,6 +29,9 @@ const useUpdateProject = ({project}:formSchemaProjectType) => {
         mutationFn: updateProject,
         onSuccess: () => {
             queryClient.invalidateQueries({queryKey: ['projects']})
+        },
+        onError: () => {
+            errorAlert(t('error.update_project'))
         }
     })
     const onSubmit = (dataProject:formSchemaProjectType,id:string) => {

@@ -34,7 +34,7 @@ const LoginForm = () => {
             navigate('/dashboard');
         },
         onError: () => {
-            errorAlert("Error en la Autenticación")
+            errorAlert(t('login.error-auth'))
         }
     })
 
