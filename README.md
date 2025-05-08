@@ -1,54 +1,41 @@
-# React + TypeScript + Vite
+# Sistema de gestión de proyectos y tareas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación frontend para un sistema de gestión de proyectos y tareas con autenticación, control de roles (Admin, Manager, Member) y permisos diferenciados.
 
-Currently, two official plugins are available:
+## Tecnologías Usadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **TypeScript**: Tipado estático para mayor robustez. [Documentación oficial](https://www.typescriptlang.org/docs/)
 
-## Expanding the ESLint configuration
+-   **shadcn/ui**: Componentes UI accesibles y personalizables.[Documentación oficial](https://ui.shadcn.com/docs/installation)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **React Hook Form + Zod**: Manejo de formularios con validación de esquemas.[Documentación oficial](https://react-hook-form.com/docs)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+-   **TanStack Query**: Gestión de estado asíncrono (API calls, caching).[Documentación oficial](https://tanstack.com/query/latest/docs/framework/react/overview)
+
+-   **React**: Biblioteca de JavaScript para construir interfaces de usuario interactivas. [Documentación oficial](https://es.react.dev/)
+-   **Vite**: Herramienta de construcción rápida para proyectos modernos de JavaScript. [Documentación oficial](https://vite.dev/)
+-   **React Router**: Biblioteca para manejar el enrutamiento en aplicaciones React. [Documentación oficial](https://reactrouter.com/)
+
+## Instalación
+
+Sigue estos pasos para configurar el proyecto en tu entorno local:
+
+1. **Clona el repositorio**:
+
+```Bash
+    git clone https://github.com/jotade13/project-system-frontend
+    cd project-system-frontend
+```
+2. **Instalar dependencias**
+
+```Bash
+    npm Install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4. **Inicia el servidor de desarrollo:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```Bash
+    npm run dev
 ```
+
+Gracias por ver este proyecto, El cual sirvió para el desarrollo de mis habilidades.
