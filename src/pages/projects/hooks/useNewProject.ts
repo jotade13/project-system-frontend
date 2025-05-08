@@ -4,9 +4,11 @@ import errorAlert from "../../../components/alerts/errorAlert";
 import { newProject } from "../utils/http";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 const useNewProject = () => {
     const queryClient = useQueryClient()
+    const {t} = useTranslation()
 
     const form = useForm({
         resolver: zodResolver(formSchemaProject),
@@ -23,7 +25,7 @@ const useNewProject = () => {
             form.reset()
         },
         onError: () => {
-            errorAlert("Error al Subir El Proyecto")
+            errorAlert(t('error.create_project'))
         }
     })
 

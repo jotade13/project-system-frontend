@@ -4,7 +4,7 @@ import { formSchemaUser } from "../utils/validations.ts"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { createUser } from "../utils/http.ts"
 import { useNavigate } from "react-router"
 import errorAlert from "../../../components/alerts/errorAlert.ts"
@@ -12,8 +12,8 @@ import { useTranslation } from "react-i18next"
 
 const UseNewUser = () => {
     const {t} = useTranslation()
-    const Navigate = useNavigate()
-
+    const navigate = useNavigate()
+    const queryClient = useQueryClient();
 
     const form = useForm<z.infer<typeof formSchemaUser>>({
         resolver: zodResolver(formSchemaUser),
@@ -23,16 +23,17 @@ const UseNewUser = () => {
           email: "",
           password: "",
           password_confirmation: ""
-        },
-})
+        },})
 
     const {mutate} = useMutation({
         mutationFn: createUser,
         onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ['users']})
             form.reset()
+            
         },
         onError: () => {
-            errorAlert("Error al crear el usuario")
+            errorAlert(t('error.create_task'))
         }
     })
 

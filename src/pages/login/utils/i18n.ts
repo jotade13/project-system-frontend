@@ -27,7 +27,8 @@ const i18n = createInstance({
                         "first_name":"Name",
                         "Last_name":"Last Name",
                         "password_confirmation": "Password"
-                    }
+                    },
+                    "error-auth": "Authentication Error"
                 },
             }
         },
@@ -43,7 +44,8 @@ const i18n = createInstance({
                     "placeholder": { 
                         "email": "correo@corre.com",
                         "password": "Contraseña"
-                    }
+                    },
+                "error-auth": "Error en la Autenticación",
                 },
             },
         },
